@@ -2,6 +2,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useSiteContent } from '../hooks/useSiteContent'
 
+const NAVBAR_LOGO = '/assets/hf/logo-hf.png' // <- remplace l'image ici si besoin
+
 function getNavLinkClass(isActive) {
   return isActive
     ? 'text-blue-900 font-semibold'
@@ -24,16 +26,20 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-900 text-white font-bold">
-            HF
+        <Link to="/" className="flex items-center gap-4">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+            <img
+              src={NAVBAR_LOGO}
+              alt="Logo Horizons Femmes"
+              className="h-12 w-12 object-contain md:h-14 md:w-14"
+            />
           </div>
 
           <div>
-            <p className="text-lg font-extrabold tracking-tight text-slate-900">
+            <p className="text-lg font-extrabold tracking-tight text-slate-900 md:text-xl">
               Horizons Femmes
             </p>
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
               ONG
             </p>
           </div>
@@ -57,9 +63,7 @@ export default function Header() {
             <button
               onClick={() => setLocale('fr')}
               className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                locale === 'fr'
-                  ? 'bg-blue-900 text-white'
-                  : 'text-slate-600'
+                locale === 'fr' ? 'bg-blue-900 text-white' : 'text-slate-600'
               }`}
             >
               FR
@@ -67,9 +71,7 @@ export default function Header() {
             <button
               onClick={() => setLocale('en')}
               className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                locale === 'en'
-                  ? 'bg-blue-900 text-white'
-                  : 'text-slate-600'
+                locale === 'en' ? 'bg-blue-900 text-white' : 'text-slate-600'
               }`}
             >
               EN
