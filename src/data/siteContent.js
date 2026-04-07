@@ -110,7 +110,7 @@ export const siteContent = {
       category: 'Organisation',
     },
   ],
-
+   
   initiativesTitle: 'Initiatives',
   initiativesText:
     "Des actions concrètes au service de la santé, de l’égalité, de la dignité et de l’autonomisation.",
@@ -436,6 +436,340 @@ export const siteContent = {
   ],
 },
 
+initiativesPage: {
+  eyebrow: 'Nos initiatives',
+  title: 'Des projets concrets au service de la santé, de la protection et de l’autonomisation.',
+  description:
+    "Horizons Femmes conçoit et met en œuvre des projets qui répondent aux vulnérabilités des femmes, des jeunes filles, des enfants et des communautés affectées par le VIH, les crises humanitaires, les inégalités de genre et les difficultés d’accès aux services essentiels.",
+
+  heroStats: [
+    { label: 'Axes visibles', value: 'Santé · Protection · Genre' },
+    { label: 'Zones d’action', value: 'Centre · Littoral · Ouest · Sud' },
+    { label: 'Approche', value: 'Communautaire · Inclusive · Durable' },
+  ],
+
+  featuredTitle: 'Projets en vedette',
+  featuredText:
+    "Une sélection de projets emblématiques qui illustrent la diversité des réponses portées par Horizons Femmes sur le terrain.",
+
+  projects: [
+    {
+      id: 'cosmo',
+      category: 'Protection de l’enfance',
+      year: 'Depuis 2023',
+      title:
+        'Projet COSMO – Consolidating Systems and Services for the Management of Orphans and Vulnerable Childrens',
+      location: 'Littoral et Ouest',
+      summary:
+        "Le projet COSMO renforce les systèmes de prise en charge des orphelins et enfants vulnérables ainsi que de leurs familles affectées par le VIH, à travers une approche intégrée centrée sur la santé, la protection, l’éducation et la stabilité socio-économique.",
+      highlights: [
+        '9 districts de santé couverts',
+        '28 formations sanitaires partenaires',
+        'Approche de gestion de cas familiale',
+      ],
+      impact:
+        "Le projet améliore l’accès aux services essentiels, renforce la coordination entre acteurs et contribue à réduire durablement la vulnérabilité des ménages."
+    },
+    {
+      id: 'proximite-plus',
+      category: 'Santé communautaire',
+      year: '2023 – 2024',
+      title: 'Projet de dépistage médicalisé « Proximité Plus »',
+      location: 'Intervention communautaire multi-partenaires',
+      summary:
+        "Proximité Plus vise à renforcer les capacités des organisations communautaires sur des thématiques clés liées au VIH, à la proctologie et aux violences basées sur le genre, tout en améliorant l’accès aux services de santé adaptés pour les populations clés.",
+      highlights: [
+        'Renforcement technique des OBC',
+        'Orientation vers les services adaptés',
+        'Sensibilisation VIH, VBG et santé communautaire',
+      ],
+      impact:
+        "Le projet favorise une meilleure appropriation des nouvelles approches en santé communautaire et améliore progressivement la qualité de l’accompagnement."
+    },
+    {
+      id: 'pasepro',
+      category: 'Réponse humanitaire',
+      year: 'Depuis 2023',
+      title:
+        'PASEPRO – Accès à des services de protection pour les populations déplacées et hôtes',
+      location: 'Ouest · Mifi · Santchou',
+      summary:
+        "Dans un contexte de crise, PASEPRO améliore l’accès aux services essentiels de protection pour les personnes déplacées internes et les communautés hôtes, avec un accent sur les femmes, les filles et les autres groupes vulnérables.",
+      highlights: [
+        'Protection humanitaire de proximité',
+        'Appui psychosocial et référencement',
+        'Coordination avec les acteurs locaux',
+      ],
+      impact:
+        "Le projet réduit les risques de violences et d’exclusion, tout en renforçant la résilience des communautés affectées."
+    },
+    {
+      id: 'chill',
+      category: 'VIH & VBG',
+      year: 'Depuis 2022',
+      title:
+        'Projet CHILL – Community HIV/AIDS Investment for Longer and Healthier Life in Cameroon',
+      location: 'Yaoundé · Douala · Bafoussam',
+      summary:
+        "CHILL renforce la prévention, les soins et le traitement du VIH, tout en créant un environnement plus sûr à travers la prévention et la prise en charge des violences basées sur le genre.",
+      highlights: [
+        'Ciblage des populations clés',
+        'Prévention VIH et accès aux soins',
+        'Prévention et prise en charge des VBG',
+      ],
+      impact:
+        "Le projet a élargi la couverture des services VIH, amélioré l’accès aux soins et renforcé les capacités des acteurs communautaires."
+    },
+    {
+      id: 'yaounde-observance',
+      category: 'VIH',
+      year: 'Projet soutenu sur 2 ans',
+      title:
+        'Renforcement de l’observance thérapeutique, dépistage et prise en charge des IST et infections opportunistes',
+      location: 'Yaoundé',
+      summary:
+        "Ce projet porté par Horizons Femmes avec l’appui de Sidaction contribue à renforcer la rétention des personnes vivant avec le VIH dans les soins, à réduire les nouvelles infections chez les travailleuses de sexe et à améliorer l’accès à la prévention et au dépistage.",
+      highlights: [
+        'Accompagnement psychosocial',
+        'Appui à l’observance et à la rétention',
+        'Mobilisation communautaire VIH',
+      ],
+      impact:
+        "Il renforce l’utilisation des services communautaires de santé et améliore la prise en charge globale des populations les plus exposées."
+    },
+    {
+      id: 'kidss',
+      category: 'Protection de l’enfance',
+      year: '2018 – 2022',
+      title:
+        'Projet KIDSS – Key Interventions to Develop Systems and Services for Orphan and Vulnerable Children',
+      location: 'Littoral et Ouest',
+      summary:
+        "Le projet KIDSS vise à améliorer durablement les conditions de vie des orphelins et enfants vulnérables, tout en renforçant la résilience de leurs familles face aux effets du VIH/SIDA.",
+      highlights: [
+        'Santé, protection, stabilité économique, scolarisation',
+        'Gestion de cas rigoureuse',
+        'Extension progressive des zones d’intervention',
+      ],
+      impact:
+        "KIDSS a amélioré l’accès des enfants aux services de santé et d’éducation, tout en renforçant les capacités des familles et des communautés."
+    },
+    {
+      id: 'cancer-col',
+      category: 'Santé sexuelle et reproductive',
+      year: '2020',
+      title:
+        'Projet de prévention et de dépistage du cancer du col de l’utérus',
+      location: 'Yaoundé · Douala · Bafoussam',
+      summary:
+        "Ce projet a renforcé la prévention communautaire des cancers et l’accès au dépistage, en combinant sensibilisation, mobilisation communautaire, référencement et collaboration avec les structures sanitaires.",
+      highlights: [
+        'Sensibilisation sur les cancers',
+        'Référencement vers les structures de santé',
+        'Prévention intégrée en SSR',
+      ],
+      impact:
+        "Il a renforcé la connaissance des communautés sur les facteurs de risque et consolidé la prévention communautaire des maladies non transmissibles."
+    },
+    {
+      id: 'democratie-feminin',
+      category: 'Plaidoyer & gouvernance',
+      year: '2017 – 2018',
+      title:
+        'Démocratie au Féminin – Appui à la massification de la participation politique des femmes',
+      location: 'Douala et réseau multi-régional',
+      summary:
+        "Ce projet a contribué à la promotion d’une culture démocratique inclusive en renforçant la participation citoyenne et politique des femmes, la paix pré et post-électorale et l’intégration du genre dans la gouvernance publique.",
+      highlights: [
+        'Éducation civique',
+        'Formation en leadership féminin',
+        'Promotion de la paix et du genre',
+      ],
+      impact:
+        "Il a renforcé la participation des femmes aux processus électoraux et favorisé une meilleure prise en compte du genre dans la gouvernance locale."
+    },
+    {
+      id: 'autonomisation-femmes',
+      category: 'Autonomisation économique',
+      year: '2017 – 2018',
+      title:
+        'Autonomisation socio-économique des femmes vivant avec le VIH',
+      location: 'Bafoussam',
+      summary:
+        "Porté par Horizons Femmes – Antenne Ouest, ce projet a renforcé les capacités de femmes vivant avec le VIH en gestion d’activités génératrices de revenus, en vie associative et en comptabilité simplifiée.",
+      highlights: [
+        '25 femmes accompagnées',
+        '2 unités de transformation du manioc',
+        'Renforcement de l’autonomie financière',
+      ],
+      impact:
+        "Le projet a amélioré les revenus des bénéficiaires, renforcé l’organisation collective et contribué à une meilleure prise en charge sanitaire."
+    },
+  ],
+
+  approachTitle: 'Notre approche d’intervention',
+  approachText:
+    "À travers ses initiatives, Horizons Femmes privilégie une approche communautaire, partenariale et centrée sur les bénéficiaires, en articulant prévention, accès aux soins, protection, autonomisation et plaidoyer.",
+  approachItems: [
+    {
+      title: 'Approche communautaire',
+      text:
+        'Des interventions de proximité pensées à partir des besoins réels des communautés et des bénéficiaires.'
+    },
+    {
+      title: 'Réponse intégrée',
+      text:
+        'Une articulation entre santé, protection, accompagnement psychosocial, éducation, inclusion et résilience.'
+    },
+    {
+      title: 'Partenariats stratégiques',
+      text:
+        'Une collaboration avec des partenaires publics, communautaires, internationaux et techniques.'
+    },
+    {
+      title: 'Impact durable',
+      text:
+        'Des actions conçues pour renforcer les systèmes, améliorer la qualité de vie et réduire durablement les vulnérabilités.'
+    },
+  ],
+},
+
+resourcesPage: {
+  eyebrow: 'Ressources',
+  title: 'Production, documentation et contenus multimédias au service du savoir partagé.',
+  description:
+    "Cette page valorise les outils, guides, supports, contenus multimédias et productions institutionnelles de Horizons Femmes afin de faciliter l’accès à l’information, la capitalisation des expériences et la diffusion des bonnes pratiques.",
+
+  tabs: {
+    production: 'Production',
+    multimedia: 'Multimédia',
+  },
+
+  productionIntro: {
+    title: 'Production documentaire',
+    text:
+      "Horizons Femmes met à disposition des ressources pédagogiques, des guides pratiques, des documents de référence et des supports de formation utiles aux acteurs communautaires, aux partenaires et au grand public.",
+  },
+
+  featuredDocs: [
+    {
+      id: 'guide-pairs',
+      category: 'Guide pratique',
+      title: 'Guide de formation des pairs éducateurs',
+      description:
+        "Un support structuré autour de plusieurs modules pour renforcer les compétences des pairs éducateurs sur le leadership communautaire, les rôles et responsabilités, le VIH, la tuberculose et la santé sexuelle et reproductive.",
+      image: '/assets/hf/resources/guide-pairs.jpg',
+      fileLabel: 'PDF',
+      actionLabel: 'Télécharger le guide',
+      path: '/assets/hf/resources/guide-formation.pdf',
+    },
+    {
+      id: 'bibliotheque-terrain',
+      category: 'Documentation',
+      title: 'Bibliothèque de terrain et capitalisation',
+      description:
+        "Une collection de rapports, comptes rendus, fiches techniques, plaidoyers et documents utiles pour suivre les interventions et partager les expériences acquises sur le terrain.",
+      image: '/assets/hf/resources/bibliotheque.jpg',
+      fileLabel: 'Dossier',
+      actionLabel: 'Voir la documentation',
+      path: '/assets/hf/resources/documentation.pdf',
+    },
+    {
+      id: 'outils-sensibilisation',
+      category: 'Outils',
+      title: 'Outils de sensibilisation et d’accompagnement',
+      description:
+        "Des supports mobilisables pour les activités de prévention, d’orientation, d’information et d’accompagnement communautaire.",
+      image: '/assets/hf/resources/outils-sensibilisation.jpg',
+      fileLabel: 'Ressources',
+      actionLabel: 'Accéder aux outils',
+      path: '/assets/hf/resources/outils-sensibilisation.pdf',
+    },
+  ],
+
+  productionSections: [
+    {
+      title: 'Modules de formation',
+      text:
+        "Les ressources de formation couvrent notamment le leadership communautaire, le rôle modèle, les rôles et responsabilités des pairs éducateurs, les généralités sur le VIH/SIDA, la tuberculose et la santé sexuelle et reproductive.",
+    },
+    {
+      title: 'Guides pratiques',
+      text:
+        "Des contenus pensés pour orienter, prévenir, accompagner et renforcer les capacités des acteurs communautaires dans leurs interventions quotidiennes.",
+    },
+    {
+      title: 'Documents téléchargeables',
+      text:
+        "Cette rubrique a vocation à accueillir des rapports, fiches techniques, TDR, présentations, notes de capitalisation et autres documents de référence.",
+    },
+    {
+      title: 'Capitalisation des expériences',
+      text:
+        "Une mise en valeur des bonnes pratiques, des apprentissages et des approches éprouvées dans la mise en œuvre des projets et des actions de terrain.",
+    },
+  ],
+
+  productionDownloadsTitle: 'Téléchargements disponibles',
+  productionDownloads: [
+    {
+      title: 'Guide de formation des pairs éducateurs',
+      meta: 'PDF · Module de formation',
+      path: '/assets/hf/resources/guide-formation.pdf',
+    },
+    {
+      title: 'Rapport ou fiche technique',
+      meta: 'PDF · Documentation',
+      path: '/assets/hf/resources/rapport-technique.pdf',
+    },
+    {
+      title: 'Support de sensibilisation',
+      meta: 'PDF · Outil pratique',
+      path: '/assets/hf/resources/support-sensibilisation.pdf',
+    },
+  ],
+
+  multimediaIntro: {
+    title: 'Espace multimédia',
+    text:
+      "Cette section est pensée pour accueillir les contenus visuels et audiovisuels de Horizons Femmes : photos de terrain, vidéos de sensibilisation, podcasts, visuels de campagne et supports à partager.",
+  },
+
+  mediaCards: [
+    {
+      title: 'Galerie photo',
+      text:
+        "Albums visuels par activité, région, atelier, cérémonie ou intervention communautaire.",
+      image: '/assets/hf/resources/media-gallery.jpg',
+    },
+    {
+      title: 'Vidéos de sensibilisation',
+      text:
+        "Capsules vidéo, extraits de campagnes et contenus pédagogiques à forte portée communautaire.",
+      image: '/assets/hf/resources/media-video.jpg',
+    },
+    {
+      title: 'Podcasts & témoignages',
+      text:
+        "Voix de terrain, récits de bénéficiaires, messages de sensibilisation et contenus audio inspirants.",
+      image: '/assets/hf/resources/media-podcast.jpg',
+    },
+  ],
+
+  mediaHighlights: [
+    'Albums photos par région et activité',
+    'Vidéos de sensibilisation',
+    'Visuels de campagne',
+    'Podcasts et témoignages',
+    'Infographies et supports de communication',
+    'Téléchargements multimédias',
+  ],
+
+  usageTitle: 'Comment utiliser ces ressources ?',
+  usageText:
+    "Les ressources de cette page peuvent être utilisées pour l’information, la formation, la sensibilisation, la mobilisation communautaire et la diffusion des connaissances auprès des partenaires, équipes, bénéficiaires et publics intéressés.",
+},
+
     footer: {
       description:
         'ONG engagée pour la justice sociale, l’égalité de genre et l’amélioration durable des conditions de vie des femmes et des jeunes filles.',
@@ -635,7 +969,6 @@ impactText:
         'Orphans and vulnerable children',
       ],
     },
-
     footer: {
       description:
         'An NGO committed to social justice, gender equality, and the sustainable improvement of living conditions for women and girls.',
