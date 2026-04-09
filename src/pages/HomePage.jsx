@@ -23,7 +23,7 @@ export default function HomePage() {
           {
             id: 'slide-1',
             label: 'Justice sociale',
-            title: 'Une action tournée vers la dignité et l’équité',
+            title: "Une action tournée vers la dignité et l'équité",
             text: 'Prévention, accompagnement et réponses concrètes.',
             image: hero.image || '/assets/hf/home/hero-slide-1.jpg',
           },
@@ -46,7 +46,7 @@ export default function HomePage() {
   return (
     <div className="space-y-10 pb-6 md:space-y-14">
       <section id="hero-home" className="relative w-full">
-        <div className="relative min-h-[78vh] overflow-hidden md:min-h-[84vh]">
+        <div className="relative min-h-[60vh] overflow-hidden md:min-h-[68vh]">
           <div className="absolute inset-0">
             {slides.map((slide, index) => (
               <img
@@ -65,26 +65,26 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.14),transparent_25%)]" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[78vh] max-w-[1440px] items-end px-4 py-10 md:min-h-[84vh] md:px-6 lg:px-8">
-            <div className="grid w-full items-end gap-10 lg:grid-cols-[1.03fr_0.97fr]">
-              <div className="max-w-4xl pb-4 text-white md:pb-8">
+          <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-[1440px] items-end px-4 py-6 md:min-h-[68vh] md:px-6 lg:px-8">
+            <div className="grid w-full items-end gap-8 lg:grid-cols-[1.03fr_0.97fr]">
+              <div className="max-w-4xl pb-3 text-white md:pb-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-200">
                   {hero.eyebrow}
                 </p>
 
-                <h1 className="mt-5 text-4xl font-black leading-[0.95] tracking-tight md:text-6xl xl:text-7xl">
+                <h1 className="mt-3 text-3xl font-black leading-[0.95] tracking-tight md:text-5xl xl:text-6xl">
                   {hero.title}
                 </h1>
 
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-100">
+                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-100">
                   {hero.description}
                 </p>
 
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-200">
+                <p className="mt-3 max-w-2xl text-base leading-7 text-slate-200">
                   {hero.secondaryDescription}
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-wrap gap-4">
                   <Link
                     to="/a-propos"
                     className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
@@ -102,28 +102,28 @@ export default function HomePage() {
               </div>
 
               <div className="self-end lg:justify-self-end">
-                <div className="max-w-xl rounded-[28px] border border-white/15 bg-white/10 p-5 text-white backdrop-blur-md md:p-6">
+                <div className="max-w-xl rounded-[28px] border border-white/15 bg-white/10 p-4 text-white backdrop-blur-md md:p-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
                     {hero.cardTitle}
                   </p>
 
-                  <p className="mt-4 text-lg leading-8 text-blue-50">
+                  <p className="mt-3 text-sm leading-7 text-blue-50">
                     {hero.cardText}
                   </p>
 
-                  <div className="mt-6 rounded-[22px] border border-white/10 bg-white/8 p-4">
+                  <div className="mt-4 rounded-[22px] border border-white/10 bg-white/8 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-200">
                       {activeSlide.label}
                     </p>
-                    <h2 className="mt-2 text-2xl font-black leading-tight">
+                    <h2 className="mt-2 text-xl font-black leading-tight">
                       {activeSlide.title}
                     </h2>
-                    <p className="mt-3 leading-7 text-slate-100">
+                    <p className="mt-2 text-sm leading-6 text-slate-100">
                       {activeSlide.text}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between gap-4">
+                  <div className="mt-4 flex items-center justify-between gap-4">
                     <div className="flex gap-2">
                       {slides.map((slide, index) => (
                         <button
@@ -228,7 +228,7 @@ export default function HomePage() {
                 to="/a-propos"
                 className="inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white"
               >
-                Découvrir l’ONG
+                Découvrir l'ONG
               </Link>
             </div>
           </div>
@@ -236,7 +236,7 @@ export default function HomePage() {
           <div className="relative min-h-[340px] overflow-hidden rounded-[30px] border border-slate-200 shadow-sm">
             <img
               src={aboutSection.image}
-              alt="Aperçu de l’ONG Horizons Femmes"
+              alt="Aperçu de l'ONG Horizons Femmes"
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />

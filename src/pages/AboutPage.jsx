@@ -4,7 +4,7 @@ import { useSiteContent } from '../hooks/useSiteContent'
 const ABOUT_HERO_IMAGE = '/assets/hf/comite-hf.jpg'
 const ABOUT_LEADER_IMAGE = '/assets/hf/comite2-hf.jpg'
 const ABOUT_BANNER_IMAGE = '/assets/hf/comite3-hf.jpg'
-const ABOUT_MAP_IMAGE = '/assets/hf/map.jpg' // <- mets ici ta carte du Cameroun en image
+const ABOUT_MAP_IMAGE = '/assets/hf/map.jpg'
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
@@ -70,7 +70,7 @@ export default function AboutPage() {
     axesSection?.list?.slice(0, 3) || [
       'Renforcer la santé communautaire',
       'Promouvoir la bonne gouvernance',
-      'Soutenir l’autonomisation socioéconomique',
+      "Soutenir l'autonomisation socioéconomique",
     ]
 
   const partnerLogos =
@@ -78,28 +78,30 @@ export default function AboutPage() {
 
   return (
     <div className="space-y-12 pb-6 md:space-y-16">
-      <section className="mx-auto max-w-7xl px-4 pt-10 md:px-6 lg:px-8 lg:pt-14">
+
+      {/* ── HERO réduit ── */}
+      <section className="mx-auto max-w-7xl px-4 pt-8 md:px-6 lg:px-8 lg:pt-10">
         <div className="overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,#020617_0%,#0f172a_45%,#1e293b_100%)] text-white">
-          <div className="grid gap-8 p-8 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:p-14">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-orange-300">
+          <div className="grid gap-6 p-6 md:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
+            <div className="flex flex-col justify-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-orange-300">
                 {content.about.eyebrow}
               </p>
 
-              <p className="mt-3 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200">
+              <p className="mt-2 inline-flex w-fit rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
                 {content.about.heroBadge}
               </p>
 
-              <h1 className="mt-6 text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
+              <h1 className="mt-4 text-3xl font-black leading-tight md:text-4xl lg:text-5xl">
                 {content.about.heroTitle}
               </h1>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
                 {content.about.heroText}
               </p>
             </div>
 
-            <div className="relative min-h-[340px] overflow-hidden rounded-[28px] border border-white/10 shadow-2xl">
+            <div className="relative min-h-[260px] overflow-hidden rounded-[24px] border border-white/10 shadow-xl">
               <img
                 src={ABOUT_HERO_IMAGE}
                 alt="Horizons Femmes - image principale À propos"
@@ -107,12 +109,12 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="rounded-[20px] bg-white/10 p-4 backdrop-blur">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="rounded-[18px] bg-white/10 p-3 backdrop-blur">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-200">
                     Horizons Femmes
                   </p>
-                  <p className="mt-2 text-sm leading-7 text-slate-200">
+                  <p className="mt-1 text-xs leading-6 text-slate-200">
                     Image principale institutionnelle de la page À propos.
                   </p>
                 </div>
@@ -284,11 +286,11 @@ export default function AboutPage() {
           <div className="absolute inset-y-0 left-0 flex max-w-2xl items-center p-6 md:p-10">
             <div className="rounded-[24px] bg-white/12 p-5 text-white backdrop-blur">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
-                Image d’ambiance
+                Image d'ambiance
               </p>
               <p className="mt-3 text-base leading-8 text-slate-100">
-                Mets ici une image forte du terrain, d’une cérémonie, d’un
-                atelier ou d’un groupe de bénéficiaires.
+                Mets ici une image forte du terrain, d'une cérémonie, d'un
+                atelier ou d'un groupe de bénéficiaires.
               </p>
             </div>
           </div>
@@ -346,64 +348,70 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── AGENCES + CARTE ── */}
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm">
-            <div className="relative min-h-[420px]">
+
+          {/* Carte — image couvre tout le cadre */}
+          <div className="overflow-hidden rounded-[32px] border border-slate-200 shadow-sm">
+            <div className="relative h-full min-h-[320px]">
               <img
                 src={ABOUT_MAP_IMAGE}
-                alt="Carte du Cameroun - zones d’intervention"
-                className="absolute inset-0 h-full w-full object-cover"
+                alt="Carte du Cameroun - zones d'intervention"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <div className="rounded-[20px] bg-white/85 p-4 backdrop-blur">
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="rounded-[18px] bg-white/85 p-3 backdrop-blur">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
                     Carte du Cameroun
                   </p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">
-                    les zones d’intervention.
+                  <p className="mt-1 text-sm leading-6 text-slate-600">
+                    Les zones d'intervention.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+          {/* Agences — liste compacte */}
+          <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm md:p-7">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
               Agences disponibles
             </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
+            <h2 className="mt-3 text-2xl font-black text-slate-900">
               Présence territoriale
             </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
+            <p className="mt-3 text-sm leading-7 text-slate-600">
               Horizons Femmes dispose de plusieurs points de présence pour
               renforcer la proximité avec les communautés et les partenaires.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-6 space-y-3">
               {content.about.offices.map((office) => (
                 <div
                   key={office.id}
-                  className="rounded-[22px] border border-slate-200 bg-slate-50 p-5"
+                  className="rounded-[20px] border border-slate-200 bg-slate-50 p-4"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-900 text-sm font-black text-white">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-900 text-xs font-black text-white">
                       {office.label}
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-black text-slate-900">
-                        {office.name}
-                      </h3>
-                      <p className="mt-1 font-medium text-blue-900">
-                        {office.city} · {office.region}
-                      </p>
-                      <p className="mt-3 leading-7 text-slate-600">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-baseline gap-x-2">
+                        <h3 className="text-base font-black text-slate-900">
+                          {office.name}
+                        </h3>
+                        <span className="text-xs font-semibold text-blue-900">
+                          {office.city} · {office.region}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs leading-5 text-slate-500">
                         {office.address}
                       </p>
-                      <p className="mt-2 text-sm font-semibold text-slate-700">
+                      <p className="mt-0.5 text-xs font-semibold text-slate-600">
                         {office.phone}
                       </p>
                     </div>

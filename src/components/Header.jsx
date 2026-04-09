@@ -86,14 +86,14 @@ export default function Header() {
       label: content?.nav?.testimonials || 'Témoignages',
       path: '/temoignages',
     }, */
-/*     {
-      label: 'Multimédia',
-      path: '/ressources',
+    {
+      label: 'Multimédiateque',
+      path: '/mediatheque',
       children: [
-        { label: 'Photothèque', href: '/ressources#phototheque' },
-        { label: 'Vidéothèque', href: '/ressources#videotheque' },
+        { label: 'Photothèque', href: '/mediatheque#phototheque' },
+        { label: 'Vidéothèque', href: '/mediatheque#videotheque' },
       ],
-    }, */
+    }, 
 
     {
       label: content?.nav?.contact || 'Contact',

@@ -57,9 +57,9 @@ export const siteContent = {
   editorial: {
     label: 'Éditorial',
     title: 'Message institutionnel',
-    image: '/assets/hf/commite.jpeg',
-    signatureLabel: 'Photo institutionnelle',
-    signatureName: 'Présidence du Conseil d’Administration',
+    image: '/assets/hf/edito.jpeg',
+    signatureLabel: 'Mme Evelyne Ndjeba',
+    signatureName: 'Présidente du Conseil d’Administration',
     signatureRole: 'Horizons Femmes',
     paragraphs: [
       "Horizons Femmes s’impose aujourd’hui comme un acteur de référence, porté par un engagement profond en faveur de la justice sociale, de l’égalité de genre et de la défense de la dignité humaine.",
@@ -79,7 +79,7 @@ export const siteContent = {
       'Nos réalisations',
       'Notre savoir-faire',
     ],
-    image: '/assets/hf/land-hf.jpeg',
+    image: '/assets/hf/land.jpeg',
   },
 
   quickLinks: [
@@ -113,63 +113,211 @@ export const siteContent = {
     },
   ],
 
-  impact: {
-    label: 'Plus de 20 ans d’engagement et de leadership féminin',
-    title: 'Une trajectoire marquée par des étapes structurantes.',
-    text:
-      "La dynamique de Horizons Femmes s’inscrit dans le temps long, avec des jalons institutionnels, communautaires et programmatiques qui traduisent un engagement constant au service des communautés.",
-    years: [
-      {
-        year: '2026',
-        title: 'Migration en ONG',
-        text: "Migration du statut d’association à ONG.",
-      },
-      {
-        year: '2025',
-        title: 'Accord de collaboration',
-        text:
-          "Renouvellement et signature de l’accord avec le Ministère de la Santé Publique.",
-      },
-      {
-        year: '2024',
-        title: 'Centre médical',
-        text: 'Ouverture du centre médical.',
-      },
-      {
-        year: '2023',
-        title: 'Visite officielle',
-        text:
-          "Visite de l’ambassadeur itinérant de USAID/PEPFAR – Dr Nkengasong.",
-      },
-      {
-        year: '2021',
-        title: 'Unité mobile',
-        text:
-          "Acquisition de l’unité mobile de dépistage du VIH, hépatites et IST.",
-      },
-      {
-        year: '2020',
-        title: 'Antenne Sud',
-        text: "Ouverture de l’antenne du Sud.",
-      },
-      {
-        year: '2019',
-        title: 'Life Center Bafoussam',
-        text: "Inauguration du Drop-In Center « Life Center » Bafoussam.",
-      },
-      {
-        year: '2012',
-        title: 'Premier Life Center',
-        text:
-          "Inauguration du premier Drop-In Center « Life Center » Yaoundé.",
-      },
-      {
-        year: '2003',
-        title: 'Légalisation',
-        text: "Légalisation de l’association Horizons Femmes.",
-      },
-    ],
-  },
+ impact: {
+  label: 'Plus de 20 ans d’engagement et de leadership féminin',
+  title: 'Une trajectoire marquée par des étapes structurantes.',
+  text:
+    "La dynamique de Horizons Femmes s’inscrit dans le temps long, avec des jalons institutionnels, communautaires et programmatiques qui traduisent un engagement constant au service des communautés.",
+
+  years: [
+    {
+      year: '2026',
+      title: 'Migration en ONG',
+      text: "Migration de statut d’association à ONG.",
+    },
+    {
+      year: '2025',
+      title: 'Accord de collaboration',
+      text:
+        "Renouvellement et signature de l’accord de collaboration avec le Ministère de la Santé Publique.",
+    },
+    {
+      year: '2024',
+      title: 'Ouverture du Centre médical',
+      text: 'Ouverture du Centre médical.',
+    },
+    {
+      year: '2023',
+      title: 'Antenne Sud sollicitée',
+      text:
+        "Sollicitation de l’antenne Sud comme cadre pour abriter le lancement des activités du mois Camerounais.",
+    },
+    {
+      year: '2023',
+      title: 'Visite officielle',
+      text:
+        "Visite de l’ambassadeur itinérant de USAID/PEPFAR – Dr NKENGASONG.",
+    },
+    {
+      year: '2021',
+      title: 'Unité mobile de dépistage',
+      text:
+        "Acquisition de l’unité mobile de dépistage du VIH, Hépatites et IST grâce au fonds de dotation Line Renaud - Loulou Gasté.",
+    },
+    {
+      year: '2021',
+      title: 'Comité des recours',
+      text:
+        "Membre du Comité d’examen des recours liés aux marchés publics.",
+    },
+    {
+      year: '2021',
+      title: 'SIDACTION',
+      text:
+        "Intégration de Horizons Femmes au Comité International de SIDACTION.",
+    },
+    {
+      year: '2020',
+      title: 'Antenne du Sud',
+      text: "Ouverture de l’Antenne du Sud.",
+    },
+    {
+      year: '2019',
+      title: 'Visite du Canada',
+      text: "Visite de l'ambassadeur du Canada au Cameroun.",
+    },
+    {
+      year: '2019',
+      title: 'Life Center Bafoussam',
+      text: "Inauguration du Drop-In Center « Life Center » Bafoussam.",
+    },
+    {
+      year: '2018',
+      title: 'Don des Nations Unies',
+      text:
+        "Cérémonie de remise de don des NATIONS UNIES à Horizons Femmes (lit gynécologique) par les représentants pays - ONUSIDA et OMS.",
+    },
+    {
+      year: '2017',
+      title: 'Visite du Haut-Commissaire',
+      text: "Visite du Haut-Commissaire du Canada au Cameroun.",
+    },
+    {
+      year: '2017',
+      title: 'Réaménagement des laboratoires',
+      text:
+        "Réaménagement des différents Laboratoires des DIC (Yaoundé – Douala).",
+    },
+    {
+      year: '2016',
+      title: 'Capitalisation Life Center',
+      text:
+        "Initiative de capitalisation d’un success story : élaboration du document de capitalisation du Life Center Yaoundé avec Sidaction.",
+    },
+    {
+      year: '2016',
+      title: 'Dispensation communautaire',
+      text:
+        "Début de la dispensation communautaire des ARVs à Horizons Femmes.",
+    },
+    {
+      year: '2015',
+      title: 'Life Center Douala',
+      text:
+        "Inauguration du Drop-In Center « Life Center » Douala et visite du Représentant Résident d’ONUSIDA au Cameroun.",
+    },
+    {
+      year: '2014',
+      title: 'Hygiène menstruelle',
+      text:
+        "Première initiative pour briser les silences sur la question des menstrues. Projet Gestion de l’hygiène menstruelle phase 1 au Cameroun.",
+    },
+    {
+      year: '2013',
+      title: 'Arbre de Noël',
+      text:
+        "Organisation de la première cérémonie de l’arbre de Noël en faveur des enfants des bénéficiaires.",
+    },
+    {
+      year: '2012',
+      title: 'Premier Life Center Yaoundé',
+      text:
+        "Inauguration du premier Drop-In Center « Life Center » Yaoundé par le Secrétaire d’Etat au Ministère de la Santé et l’Ambassadeur des Etats-Unis au Cameroun.",
+    },
+    {
+      year: '2011',
+      title: 'Fonds de garantie',
+      text:
+        "Première initiative d’envergure de l’axe stratégique n°3 : plaidoyer pour la mise sur pied d’un fonds de garantie pour l’accès des femmes aux crédits bancaires.",
+    },
+    {
+      year: '2011',
+      title: 'Parité genre',
+      text:
+        "Plaidoyer auprès du Conseil électoral du Cameroun en vue de l’intégration de la parité genre aux postes électifs.",
+    },
+    {
+      year: '2010',
+      title: 'Création des antennes',
+      text:
+        "Création des Antennes Horizons Femmes du Littoral et de l’Ouest.",
+    },
+    {
+      year: '2009',
+      title: 'Préservatif féminin',
+      text:
+        "Initiative de masse de vulgarisation du condom féminin : « Campagne Mini ferme au rythme du préservatif féminin ».",
+    },
+    {
+      year: '2009',
+      title: 'Fonds Mondial',
+      text:
+        "Intégration de Horizons Femmes à l’Instance de Coordination Nationale du Fonds Mondial.",
+    },
+    {
+      year: '2009',
+      title: 'Première étude de base',
+      text:
+        "Première étude de base d’un projet de Horizons Femmes : projet sur le travail domestique au Cameroun avec ONU Femmes New York.",
+    },
+    {
+      year: '2008',
+      title: 'Kits alimentaires',
+      text:
+        "Première initiative de distribution des kits alimentaires aux personnes infectées du VIH/SIDA.",
+    },
+    {
+      year: '2007',
+      title: 'Plan stratégique',
+      text: "Premier plan stratégique de l’association.",
+    },
+    {
+      year: '2006',
+      title: 'Formation des Travailleuses de sexe',
+      text:
+        "Première initiative de formation des Travailleuses de sexe dans le cadre de la lutte contre le VIH et la prévention des IST avec CARE Cameroun.",
+    },
+    {
+      year: '2006',
+      title: 'Projet STOP TB',
+      text:
+        "Premier contrat de coopération avec les PTF : projet STOP TB avec Open Society Institute.",
+    },
+    {
+      year: '2005',
+      title: 'Mobilisation politique des femmes',
+      text:
+        "Première participation de Horizons Femmes au processus électoral : « Promotion de la participation électorale et du leadership politique de la femme et de la jeune fille » avec le PNUD.",
+    },
+    {
+      year: '2004',
+      title: 'Campagne Pincer-Dérouler',
+      text:
+        "Initiative briser les barrières sur le condom : « Campagne Pincer-Dérouler » avec ACMS.",
+    },
+    {
+      year: '2004',
+      title: 'Première campagne de masse',
+      text:
+        "Première campagne de masse de Horizons Femmes : « Mobilisation Communautaire des jeunes pour la prévention TB/VIH ».",
+    },
+    {
+      year: '2003',
+      title: 'Légalisation',
+      text: "Légalisation de l’association Horizons Femmes.",
+    },
+  ],
+},
 
   news: {
     label: 'Restez informés',
@@ -182,7 +330,7 @@ export const siteContent = {
       title: 'Migration du statut d’association à ONG',
       excerpt:
         "Cette évolution institutionnelle marque une nouvelle étape dans le développement stratégique et la visibilité de Horizons Femmes.",
-      image: '/assets/hf/home/news-featured.jpg',
+      image: '/assets/hf/d.jpg',
     },
     items: [
       {
@@ -272,10 +420,10 @@ export const siteContent = {
   },
 
   stayInformed: {
-    title: 'Restez informés',
+    title: 'Rejoindre Notre Mission',
     text:
       "Suivez les actions, les projets, les temps forts et les publications de Horizons Femmes à travers nos actualités et nos différentes ressources.",
-    primaryCta: 'Voir les actualités',
+    primaryCta: 'Benevole',
     secondaryCta: 'Faire un don',
   },
 },
@@ -288,7 +436,7 @@ export const siteContent = {
 
   heroBadge: 'Organisation • Histoire • Gouvernance',
   heroTitle:
-    "Une organisation de référence engagée pour les droits, la dignité et l’autonomisation des femmes.",
+    "référence UNE ORGANISATION DE REFERENCE ENGAGEE OUR LES DROITS, LA DIGNITE ET L'AUTONOMISATION DES FEMMES, FILLES ET AUTRES POPULATIONS VULNERABLES.",
   heroText:
     "Depuis plus de vingt ans, Horizons Femmes accompagne les mutations sociales en faveur de l’égalité des genres, avec un ancrage communautaire fort, une expertise reconnue et une présence active dans plusieurs régions du Cameroun.",
 
