@@ -1,14 +1,17 @@
 import { useMemo, useState } from 'react'
-import CameroonOfficeMap from '../components/CameroonOfficeMap'
 import { useSiteContent } from '../hooks/useSiteContent'
 
-const ABOUT_HERO_IMAGE = '/assets/hf/comite-hf.jpg' // <- image hero principale
-const ABOUT_LEADER_IMAGE = '/assets/hf/comite2-hf.jpg' // <- photo responsable / fondatrice / directrice
-const ABOUT_BANNER_IMAGE = '/assets/hf/comite3-hf.jpg' // <- image terrain / équipe / activité
+const ABOUT_HERO_IMAGE = '/assets/hf/comite-hf.jpg'
+const ABOUT_LEADER_IMAGE = '/assets/hf/comite2-hf.jpg'
+const ABOUT_BANNER_IMAGE = '/assets/hf/comite3-hf.jpg'
+const ABOUT_MAP_IMAGE = '/assets/hf/map.jpg' // <- mets ici ta carte du Cameroun en image
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
-    <div className="overflow-hidden rounded-[24px] border border-cyan-900/40 bg-slate-950/90">
+    <div
+      id={item.id}
+      className="overflow-hidden rounded-[24px] border border-cyan-900/40 bg-slate-950/90"
+    >
       <button
         type="button"
         onClick={onToggle}
@@ -51,13 +54,27 @@ export default function AboutPage() {
   const [selectedHonor, setSelectedHonor] = useState(
     content.about.honors?.[0] || null
   )
-  const [activeOffice, setActiveOffice] = useState(
-    content.about.offices?.[0] || null
-  )
 
   const currentHonor = useMemo(() => {
     return selectedHonor || content.about.honors?.[0]
   }, [selectedHonor, content.about.honors])
+
+  const missionSection =
+    content.about.sections?.find((item) => item.id === 'mission') || null
+  const visionSection =
+    content.about.sections?.find((item) => item.id === 'vision') || null
+  const axesSection =
+    content.about.sections?.find((item) => item.id === 'axes') || null
+
+  const objectivesList =
+    axesSection?.list?.slice(0, 3) || [
+      'Renforcer la santé communautaire',
+      'Promouvoir la bonne gouvernance',
+      'Soutenir l’autonomisation socioéconomique',
+    ]
+
+  const partnerLogos =
+    content.about?.partners?.logos || content.home?.partners?.logos || []
 
   return (
     <div className="space-y-12 pb-6 md:space-y-16">
@@ -96,8 +113,7 @@ export default function AboutPage() {
                     Horizons Femmes
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-200">
-                    Remplace cette image par une photo institutionnelle forte :
-                    équipe, bénéficiaires, terrain ou événement officiel.
+                    Image principale institutionnelle de la page À propos.
                   </p>
                 </div>
               </div>
@@ -107,6 +123,53 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-3">
+          <div
+            id="mission"
+            className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              Mission
+            </p>
+            <p className="mt-4 leading-8 text-slate-600">
+              {missionSection?.content || content.about.description}
+            </p>
+          </div>
+
+          <div
+            id="objectifs"
+            className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              Objectifs
+            </p>
+            <ul className="mt-4 space-y-3 text-slate-600">
+              {objectivesList.map((item) => (
+                <li key={item} className="leading-8">
+                  • {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div
+            id="vision"
+            className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              Vision
+            </p>
+            <p className="mt-4 leading-8 text-slate-600">
+              {visionSection?.content || content.about.description}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="histoire"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="rounded-[32px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
@@ -232,7 +295,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <section
+        id="honors"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
         <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
@@ -281,23 +347,106 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="mb-8 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-            {content.about.officesTitle}
-          </p>
-          <p className="mt-3 text-lg leading-8 text-slate-600">
-            {content.about.officesSubtitle}
-          </p>
-        </div>
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm">
+            <div className="relative min-h-[420px]">
+              <img
+                src={ABOUT_MAP_IMAGE}
+                alt="Carte du Cameroun - zones d’intervention"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 to-transparent" />
 
-        <CameroonOfficeMap
-          offices={content.about.offices}
-          activeOffice={activeOffice}
-          setActiveOffice={setActiveOffice}
-        />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="rounded-[20px] bg-white/85 p-4 backdrop-blur">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+                    Carte du Cameroun
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    les zones d’intervention.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              Agences disponibles
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              Présence territoriale
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              Horizons Femmes dispose de plusieurs points de présence pour
+              renforcer la proximité avec les communautés et les partenaires.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {content.about.offices.map((office) => (
+                <div
+                  key={office.id}
+                  className="rounded-[22px] border border-slate-200 bg-slate-50 p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-900 text-sm font-black text-white">
+                      {office.label}
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-black text-slate-900">
+                        {office.name}
+                      </h3>
+                      <p className="mt-1 font-medium text-blue-900">
+                        {office.city} · {office.region}
+                      </p>
+                      <p className="mt-3 leading-7 text-slate-600">
+                        {office.address}
+                      </p>
+                      <p className="mt-2 text-sm font-semibold text-slate-700">
+                        {office.phone}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              Partenaires
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              Des partenariats qui renforcent notre action
+            </h2>
+          </div>
+
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {partnerLogos.map((item) => (
+              <div
+                key={item.alt}
+                className="flex h-28 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="max-h-14 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="values"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
         <div className="rounded-[32px] bg-blue-900 p-8 text-white md:p-10">
           <h2 className="text-3xl font-black">
             {content.about.valuesReminderTitle}

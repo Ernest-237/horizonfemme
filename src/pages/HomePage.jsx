@@ -1,78 +1,150 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSiteContent } from '../hooks/useSiteContent'
 
-const HOME_HERO_IMAGE = '/assets/hf/femme-hf.avif' // <- mets ici ton image hero
-
 export default function HomePage() {
   const content = useSiteContent()
-  const [activeTab, setActiveTab] = useState(content.home.editorialTabs[0].id)
+  const page = content?.home || {}
 
-  const activeContent =
-    content.home.editorialTabs.find((tab) => tab.id === activeTab) ||
-    content.home.editorialTabs[0]
+  const hero = page.hero || {}
+  const editorial = page.editorial || { paragraphs: [] }
+  const aboutSection = page.aboutSection || { points: [] }
+  const quickLinks = page.quickLinks || []
+  const impact = page.impact || { years: [] }
+  const news = page.news || { items: [] }
+  const projectsPreview = page.projectsPreview || { items: [] }
+  const partners = page.partners || { logos: [] }
+  const stayInformed = page.stayInformed || {}
+
+  const slides =
+    hero.slides?.length > 0
+      ? hero.slides
+      : [
+          {
+            id: 'slide-1',
+            label: 'Justice sociale',
+            title: 'Une action tournée vers la dignité et l’équité',
+            text: 'Prévention, accompagnement et réponses concrètes.',
+            image: hero.image || '/assets/hf/home/hero-slide-1.jpg',
+          },
+        ]
+
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    if (slides.length <= 1) return
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5500)
+
+    return () => clearInterval(interval)
+  }, [slides.length])
+
+  const activeSlide = slides[currentSlide]
 
   return (
-    <div>
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8 lg:py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-              {content.home.hero.eyebrow}
-            </p>
+    <div className="space-y-10 pb-6 md:space-y-14">
+      <section id="hero-home" className="relative w-full">
+        <div className="relative min-h-[78vh] overflow-hidden md:min-h-[84vh]">
+          <div className="absolute inset-0">
+            {slides.map((slide, index) => (
+              <img
+                key={slide.id}
+                src={slide.image}
+                alt={slide.title}
+                className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ${
+                  index === currentSlide
+                    ? 'scale-100 opacity-100'
+                    : 'scale-105 opacity-0'
+                }`}
+              />
+            ))}
 
-            <h1 className="mt-4 text-4xl font-black leading-tight tracking-tight text-slate-900 md:text-6xl">
-              {content.home.hero.title}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-              {content.home.hero.description}
-            </p>
-
-            {content.home.hero.secondaryDescription && (
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-                {content.home.hero.secondaryDescription}
-              </p>
-            )}
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/a-propos"
-                className="rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
-              >
-                {content.home.hero.primaryCta}
-              </Link>
-
-              <Link
-                to="/initiatives"
-                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
-              >
-                {content.home.hero.secondaryCta}
-              </Link>
-            </div>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.72)_30%,rgba(15,23,42,0.46)_65%,rgba(15,23,42,0.30)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.14),transparent_25%)]" />
           </div>
 
-          <div className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-sm md:p-5">
-            <div className="relative min-h-[420px] overflow-hidden rounded-[28px]">
-              <img
-                src={HOME_HERO_IMAGE}
-                alt="Horizons Femmes - image hero"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+          <div className="relative z-10 mx-auto flex min-h-[78vh] max-w-[1440px] items-end px-4 py-10 md:min-h-[84vh] md:px-6 lg:px-8">
+            <div className="grid w-full items-end gap-10 lg:grid-cols-[1.03fr_0.97fr]">
+              <div className="max-w-4xl pb-4 text-white md:pb-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-200">
+                  {hero.eyebrow}
+                </p>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-blue-950/45 to-blue-900/20" />
+                <h1 className="mt-5 text-4xl font-black leading-[0.95] tracking-tight md:text-6xl xl:text-7xl">
+                  {hero.title}
+                </h1>
 
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.22),transparent_28%)]" />
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-100">
+                  {hero.description}
+                </p>
 
-              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7">
-                <div className="max-w-xl rounded-[24px] bg-blue-900/80 p-6 text-white backdrop-blur-md md:p-7">
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-200">
+                  {hero.secondaryDescription}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    to="/a-propos"
+                    className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
+                  >
+                    {hero.primaryCta}
+                  </Link>
+
+                  <Link
+                    to="/initiatives"
+                    className="rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
+                  >
+                    {hero.secondaryCta}
+                  </Link>
+                </div>
+              </div>
+
+              <div className="self-end lg:justify-self-end">
+                <div className="max-w-xl rounded-[28px] border border-white/15 bg-white/10 p-5 text-white backdrop-blur-md md:p-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
-                    {content.home.hero.cardTitle}
+                    {hero.cardTitle}
                   </p>
 
                   <p className="mt-4 text-lg leading-8 text-blue-50">
-                    {content.home.hero.cardText}
+                    {hero.cardText}
                   </p>
+
+                  <div className="mt-6 rounded-[22px] border border-white/10 bg-white/8 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-200">
+                      {activeSlide.label}
+                    </p>
+                    <h2 className="mt-2 text-2xl font-black leading-tight">
+                      {activeSlide.title}
+                    </h2>
+                    <p className="mt-3 leading-7 text-slate-100">
+                      {activeSlide.text}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between gap-4">
+                    <div className="flex gap-2">
+                      {slides.map((slide, index) => (
+                        <button
+                          key={slide.id}
+                          type="button"
+                          onClick={() => setCurrentSlide(index)}
+                          className={`h-3 rounded-full transition ${
+                            index === currentSlide
+                              ? 'w-10 bg-orange-400'
+                              : 'w-3 bg-white/40'
+                          }`}
+                          aria-label={`Aller au slide ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    <p className="text-sm font-medium text-slate-200">
+                      {String(currentSlide + 1).padStart(2, '0')} /{' '}
+                      {String(slides.length).padStart(2, '0')}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,138 +152,396 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-          <div className="flex flex-wrap gap-3">
-            {content.home.editorialTabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  activeTab === tab.id
-                    ? 'bg-blue-900 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-6 rounded-3xl bg-slate-50 p-6">
-            <p className="text-lg leading-8 text-slate-700">
-              {activeContent.content}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {content.home.highlights.map((item) => (
-            <div key={item.title} className="rounded-3xl bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
-              <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8">
-        <div className="mb-8 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-            {content.home.newsPreviewTitle}
-          </p>
-          <p className="mt-3 text-lg leading-8 text-slate-600">
-            {content.home.newsPreviewText}
-          </p>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          {content.home.newsItems.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-3xl bg-white p-6 shadow-sm"
-            >
-              <div className="flex items-center gap-3 text-sm text-slate-500">
-                <span className="rounded-full bg-orange-100 px-3 py-1 font-semibold text-orange-700">
-                  {item.category}
-                </span>
-                <span>{item.date}</span>
+      <section
+        id="edito-home"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
+        <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
+          <div className="relative min-h-[360px] overflow-hidden rounded-[30px] border border-slate-200 shadow-sm">
+            <img
+              src={editorial.image}
+              alt="Photo PCA Horizons Femmes"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <div className="rounded-[20px] bg-white/12 p-4 text-white backdrop-blur">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
+                  {editorial.signatureLabel}
+                </p>
+                <p className="mt-2 text-base font-semibold">
+                  {editorial.signatureName}
+                </p>
+                <p className="text-sm text-slate-100">
+                  {editorial.signatureRole}
+                </p>
               </div>
-              <h3 className="mt-4 text-xl font-bold text-slate-900">
-                {item.title}
-              </h3>
-              <p className="mt-3 leading-7 text-slate-600">{item.summary}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8">
-        <div className="mb-8 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-            {content.home.initiativesTitle}
-          </p>
-          <p className="mt-3 text-lg leading-8 text-slate-600">
-            {content.home.initiativesText}
-          </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {content.home.initiatives.map((item) => (
-            <div key={item.title} className="rounded-3xl bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
-              <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
             </div>
+          </div>
+
+          <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              {editorial.label}
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              {editorial.title}
+            </h2>
+
+            <div className="mt-6 space-y-5 text-lg leading-8 text-slate-600">
+              {editorial.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="about-home"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
+        <div className="grid gap-8 lg:grid-cols-[1.06fr_0.94fr]">
+          <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              {aboutSection.label}
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              {aboutSection.title}
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              {aboutSection.text}
+            </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {aboutSection.points.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-[18px] bg-slate-50 px-4 py-4 text-sm font-medium text-slate-700"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-7">
+              <Link
+                to="/a-propos"
+                className="inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white"
+              >
+                Découvrir l’ONG
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative min-h-[340px] overflow-hidden rounded-[30px] border border-slate-200 shadow-sm">
+            <img
+              src={aboutSection.image}
+              alt="Aperçu de l’ONG Horizons Femmes"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {quickLinks.map((item) => (
+            <Link
+              key={item.title}
+              to={item.path}
+              className="group overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1"
+            >
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="text-2xl font-black text-white">{item.title}</p>
+                </div>
+              </div>
+
+              <div className="p-5">
+                <p className="leading-7 text-slate-600">{item.text}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
+      <section
+        id="impact-home"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
+        <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-black text-slate-900">
-              {content.home.impactTitle}
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              {impact.label}
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              {impact.title}
             </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
-              {content.home.impactText}
+              {impact.text}
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {content.home.timeline.map((item) => (
-              <div
-                key={`${item.year}-${item.text}`}
-                className="rounded-2xl border border-slate-200 p-5"
+          <div className="mt-8 overflow-x-auto">
+            <div className="flex min-w-max gap-4 pb-2">
+              {impact.years.map((item) => (
+                <div
+                  key={`${item.year}-${item.title}`}
+                  className="w-[290px] rounded-[24px] border border-slate-200 bg-slate-50 p-5"
+                >
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">
+                    {item.year}
+                  </p>
+                  <h3 className="mt-3 text-xl font-black text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="actualites-home"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
+        <div className="flex items-end justify-between gap-6">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              {news.label}
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              {news.title}
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              {news.text}
+            </p>
+          </div>
+
+          <Link
+            to="/actualites"
+            className="hidden rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 lg:inline-flex"
+          >
+            Voir toutes les actualités
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <article className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
+            <div className="h-[320px] overflow-hidden">
+              <img
+                src={news.featured?.image}
+                alt={news.featured?.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="p-6 md:p-7">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">
+                  {news.featured?.category}
+                </span>
+                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-900">
+                  {news.featured?.year}
+                </span>
+              </div>
+
+              <h3 className="mt-4 text-3xl font-black leading-tight text-slate-900">
+                {news.featured?.title}
+              </h3>
+
+              <p className="mt-4 text-lg leading-8 text-slate-600">
+                {news.featured?.excerpt}
+              </p>
+            </div>
+          </article>
+
+          <div className="space-y-6">
+            {news.items.map((item) => (
+              <article
+                key={item.title}
+                className="grid gap-4 rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-[140px_1fr]"
               >
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">
-                  {item.year}
-                </p>
-                <p className="mt-3 leading-7 text-slate-700">{item.text}</p>
+                <div className="overflow-hidden rounded-[18px]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full min-h-[120px] w-full object-cover"
+                  />
+                </div>
+
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
+                      {item.category}
+                    </span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-900">
+                      {item.year}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-3 text-xl font-black leading-tight text-slate-900">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 leading-7 text-slate-600">
+                    {item.excerpt}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="initiatives-home"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
+        <div className="flex items-end justify-between gap-6">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              {projectsPreview.label}
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              {projectsPreview.title}
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              {projectsPreview.text}
+            </p>
+          </div>
+
+          <Link
+            to="/initiatives"
+            className="hidden rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 lg:inline-flex"
+          >
+            Voir les initiatives
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <article className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
+            <div className="h-[320px] overflow-hidden">
+              <img
+                src={projectsPreview.featured?.image}
+                alt={projectsPreview.featured?.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="p-6 md:p-7">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">
+                  {projectsPreview.featured?.badge}
+                </span>
+              </div>
+
+              <h3 className="mt-4 text-3xl font-black leading-tight text-slate-900">
+                {projectsPreview.featured?.title}
+              </h3>
+
+              <p className="mt-4 text-lg leading-8 text-slate-600">
+                {projectsPreview.featured?.text}
+              </p>
+
+              <Link
+                to="/initiatives"
+                className="mt-6 inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white"
+              >
+                {projectsPreview.featured?.cta}
+              </Link>
+            </div>
+          </article>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {projectsPreview.items.map((item) => (
+              <article
+                key={item.title}
+                className="overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-sm"
+              >
+                <div className="h-44 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div className="p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+                    {item.badge}
+                  </p>
+                  <h3 className="mt-3 text-2xl font-black leading-tight text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="partenaires-home"
+        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+      >
+        <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+              {partners.label}
+            </p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">
+              {partners.title}
+            </h2>
+          </div>
+
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {partners.logos.map((item) => (
+              <div
+                key={item.alt}
+                className="flex h-28 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="max-h-14 w-auto object-contain"
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8">
-        <div className="rounded-3xl bg-blue-900 p-8 text-white md:p-10">
-          <h2 className="text-3xl font-black">{content.home.cta.title}</h2>
-          <p className="mt-4 max-w-2xl leading-7 text-blue-50">
-            {content.home.cta.text}
+      <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="rounded-[30px] bg-blue-900 p-8 text-white md:p-10">
+          <h2 className="text-3xl font-black">{stayInformed.title}</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-blue-50">
+            {stayInformed.text}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <button className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-900">
-              {content.home.cta.primary}
-            </button>
+            <Link
+              to="/actualites"
+              className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-900"
+            >
+              {stayInformed.primaryCta}
+            </Link>
 
             <Link
               to="/don"
               className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white"
             >
-              {content.home.cta.secondary}
+              {stayInformed.secondaryCta}
             </Link>
           </div>
         </div>

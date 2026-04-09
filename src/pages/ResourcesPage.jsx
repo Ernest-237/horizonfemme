@@ -43,7 +43,7 @@ export default function ResourcesPage() {
 
             <div className="relative min-h-[320px] overflow-hidden rounded-[28px] border border-white/10 shadow-2xl">
               <img
-                src="/assets/hf/resources/resources-hero.jpg"
+                src="/assets/hf/acom.jpeg"
                 alt="Ressources Horizons Femmes"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -54,8 +54,7 @@ export default function ResourcesPage() {
                     Centre de ressources
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-100">
-                    Mets ici une image forte liée aux formations, à la documentation
-                    ou à une activité de production de contenus.
+                    
                   </p>
                 </div>
               </div>

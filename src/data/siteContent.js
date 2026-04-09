@@ -12,176 +12,271 @@ export const siteContent = {
 
   home: {
   hero: {
-    eyebrow: 'ONG • Justice sociale • Égalité de genre',
+    eyebrow:
+      'Actions pour l’égalité • la justice sociale • l’autonomisation des femmes, filles et autres populations vulnérables',
     title:
-      'Depuis plus de 20 ans, Horizons Femmes agit pour une société plus juste, inclusive et équitable.',
+      'Horizons Femmes agit pour transformer durablement les conditions de vie des femmes, des filles et des communautés vulnérables.',
     description:
-      "Horizons Femmes s’impose comme un acteur de référence de la société civile camerounaise, engagé en faveur de la justice sociale, de l’égalité de genre et de l’amélioration durable des conditions de vie des femmes et des jeunes filles en situation de vulnérabilité.",
+      "Depuis plus de vingt ans, Horizons Femmes s’impose comme un acteur de référence de la société civile camerounaise, engagé en faveur de la justice sociale, de l’égalité de genre et de l’amélioration durable des conditions de vie des femmes et des jeunes filles en situation de vulnérabilité.",
     secondaryDescription:
-      "À travers cette plateforme, l’organisation valorise ses actions, partage ses connaissances, renforce la visibilité des enjeux liés au genre et à la santé, et favorise le dialogue avec ses partenaires, bénéficiaires et le grand public.",
-    primaryCta: "Découvrir l’organisation",
+      "Née de la volonté de femmes pionnières animées par un profond élan de solidarité et d’engagement, l’organisation s’est construite au fil des années sur des valeurs fortes, un ancrage communautaire durable et une expertise reconnue dans la mise en œuvre d’actions à fort impact social.",
+    primaryCta: 'Découvrir l’ONG',
     secondaryCta: 'Voir les initiatives',
     cardTitle: 'Édito',
     cardText:
-      "Ce site se veut bien plus qu’une vitrine institutionnelle. Il constitue un espace de référence, d’information et de mobilisation, au service d’une transformation sociale durable.",
+      "Ce site se veut bien plus qu’une vitrine institutionnelle. Il constitue un espace de référence, d’information et de mobilisation, pensé pour valoriser les actions menées, partager les connaissances acquises, renforcer la visibilité des enjeux liés au genre et à la santé, et favoriser le dialogue avec l’ensemble des parties prenantes.",
+    image: '/assets/hf/home/hero-slide-1.jpg',
+    slides: [
+      {
+        id: 'slide-1',
+        label: 'Justice sociale',
+        title: 'Une action tournée vers la dignité et l’équité',
+        text:
+          "Horizons Femmes agit pour construire une société plus juste, inclusive et respectueuse des droits des femmes, des filles et des populations vulnérables.",
+        image: '/assets/hf/carousel1.jpeg',
+      },
+      {
+        id: 'slide-2',
+        label: 'Leadership féminin',
+        title: 'Plus de 20 ans d’engagement et de leadership',
+        text:
+          "L’organisation s’appuie sur une trajectoire forte, bâtie sur le terrain, la confiance des partenaires et la proximité avec les communautés.",
+        image: '/assets/hf/carousel2.jpeg',
+      },
+      {
+        id: 'slide-3',
+        label: 'Actions de terrain',
+        title: 'Des réponses concrètes au plus près des besoins',
+        text:
+          "Prévention, accompagnement, santé communautaire, protection et autonomisation structurent les interventions menées par Horizons Femmes.",
+        image: '/assets/hf/carousel3.jpeg',
+      },
+    ],
   },
 
-  editorialTabs: [
-    {
-      id: 'history',
-      label: 'Notre histoire',
-      content:
-        "Fondée il y a plus de vingt ans, Horizons Femmes est née pour répondre à la vulnérabilité des jeunes filles, notamment celles devenues mères très tôt. Structurée officiellement en 2003, l’organisation a progressivement consolidé son action grâce à son ancrage communautaire, ses premiers financements et l’ouverture de ses antennes régionales.",
-    },
-    {
-      id: 'mission',
-      label: 'Notre mission',
-      content:
-        "Accompagner les mutations sociales en faveur de l’égalité des genres, dans les secteurs de forte vulnérabilité pour les femmes et la jeune fille.",
-    },
-    {
-      id: 'values',
-      label: 'Nos valeurs',
-      content:
-        "Horizons Femmes agit sur la base de cinq valeurs fondatrices : intégrité, professionnalisme, dynamisme, rigueur et humilité.",
-    },
-    {
-      id: 'axes',
-      label: 'Axes stratégiques',
-      content:
-        "Les actions de l’organisation s’articulent autour de cinq axes majeurs : santé communautaire, bonne gouvernance, autonomisation socioéconomique, environnement et protection de la nature, paix, sécurité et action humanitaire.",
-    },
-    {
-      id: 'expertise',
-      label: 'Notre savoir-faire',
-      content:
-        "Depuis plus de 20 ans, Horizons Femmes a développé un savoir-faire reconnu en approche communautaire, santé sexuelle et reproductive, innovation sociale, plaidoyer, mobilisation territoriale, partenariats stratégiques et gouvernance multidisciplinaire.",
-    },
-  ],
+  editorial: {
+    label: 'Éditorial',
+    title: 'Message institutionnel',
+    image: '/assets/hf/commite.jpeg',
+    signatureLabel: 'Photo institutionnelle',
+    signatureName: 'Présidence du Conseil d’Administration',
+    signatureRole: 'Horizons Femmes',
+    paragraphs: [
+      "Horizons Femmes s’impose aujourd’hui comme un acteur de référence, porté par un engagement profond en faveur de la justice sociale, de l’égalité de genre et de la défense de la dignité humaine.",
+      "À travers ses interventions, l’organisation agit pour renforcer la transparence et l’accessibilité de ses actions, promouvoir ses initiatives et leurs impacts au niveau national et international, capitaliser les expériences acquises et diffuser les bonnes pratiques.",
+      "Cette plateforme a été pensée comme un espace de mobilisation, de dialogue et de visibilité, au service d’une société plus juste, inclusive et équitable.",
+    ],
+  },
 
-  highlights: [
-    {
-      title: 'Transparence',
-      text:
-        "Renforcer la transparence et l’accessibilité des interventions de Horizons Femmes.",
-    },
-    {
-      title: 'Impact',
-      text:
-        "Promouvoir les initiatives de l’organisation et leurs impacts aux niveaux national et international.",
-    },
-    {
-      title: 'Capitalisation',
-      text:
-        "Capitaliser et diffuser les expériences, les connaissances acquises et les bonnes pratiques.",
-    },
-    {
-      title: 'Engagement',
-      text:
-        "Créer un cadre d’engagement et de collaboration avec les partenaires, bénéficiaires et le grand public.",
-    },
-  ],
-
-  newsPreviewTitle: 'Actualités',
-  newsPreviewText:
-    'Dernières informations institutionnelles et temps forts de Horizons Femmes.',
-
-  newsItems: [
-    {
-      title: 'Ouverture du centre médical',
-      summary:
-        "Une nouvelle étape majeure dans le renforcement de l’offre de services de proximité au bénéfice des communautés.",
-      date: '2024',
-      category: 'Institutionnel',
-    },
-    {
-      title:
-        'Renouvellement de l’accord avec le Ministère de la Santé Publique',
-      summary:
-        "La collaboration avec les autorités sanitaires est renouvelée pour consolider les actions de santé communautaire.",
-      date: '2025',
-      category: 'Partenariat',
-    },
-    {
-      title: 'Migration du statut d’association à ONG',
-      summary:
-        "Une évolution institutionnelle majeure qui marque une nouvelle phase de croissance et de leadership.",
-      date: '2026',
-      category: 'Organisation',
-    },
-  ],
-   
-  initiativesTitle: 'Initiatives',
-  initiativesText:
-    "Des actions concrètes au service de la santé, de l’égalité, de la dignité et de l’autonomisation.",
-
-  initiatives: [
-    {
-      title: 'Santé communautaire',
-      text:
-        "Contribuer à l’amélioration de l’efficacité des actions de santé communautaire au bénéfice des femmes et de la jeune fille.",
-    },
-    {
-      title: 'Bonne gouvernance',
-      text:
-        "Favoriser la bonne gouvernance en vue de la sauvegarde des droits des cibles de l’association.",
-    },
-    {
-      title: 'Autonomisation socioéconomique',
-      text:
-        "Promouvoir l’autonomisation socio-économique de la femme et de la jeune fille à travers des actions de réduction de la pauvreté, de sécurité alimentaire et d’économie sociale & solidaire.",
-    },
-    {
-      title: 'Environnement et protection de la nature',
-      text:
-        "Favoriser la maîtrise des changements climatiques et de leurs effets néfastes sur les femmes et les jeunes.",
-    },
-    {
-      title: 'Paix, sécurité et action humanitaire',
-      text:
-        "Agir pour garantir la paix, la sécurité et l’action humanitaire dans les contextes de crise.",
-    },
-  ],
-
-  impactTitle: 'Plus de 20 ans de vies transformées',
-  impactText:
-    "Une trajectoire marquée par l’engagement, l’innovation sociale et le leadership féminin au service des communautés.",
-
-  timeline: [
-    {
-      year: '2026',
-      text: "Migration du statut d’association à ONG.",
-    },
-    {
-      year: '2025',
-      text:
-        "Renouvellement et signature de l’accord de collaboration avec le Ministère de la Santé Publique.",
-    },
-    {
-      year: '2024',
-      text: 'Ouverture du centre médical.',
-    },
-    {
-      year: '2020',
-      text: "Ouverture de l’antenne du Sud.",
-    },
-    {
-      year: '2012',
-      text:
-        'Inauguration du premier Drop-In Center « Life Center » à Yaoundé.',
-    },
-    {
-      year: '2003',
-      text: "Légalisation de l’association Horizons Femmes.",
-    },
-  ],
-
-  cta: {
-    title: 'Adhérer à notre mission',
+  aboutSection: {
+    label: 'À propos de l’ONG Horizons Femmes',
+    title: "À propos de l’ONG Horizons Femmes",
     text:
-      "Soutenez une organisation engagée pour la justice sociale, l’égalité de genre et l’amélioration durable des conditions de vie des femmes et des jeunes filles.",
-    primary: 'Devenir partenaire',
-    secondary: 'Faire un don',
+      "Créée pour répondre aux vulnérabilités qui touchent les femmes, les jeunes filles et d’autres groupes exposés, Horizons Femmes développe des réponses concrètes dans les domaines de la santé communautaire, de la gouvernance, de l’autonomisation socioéconomique, de la protection et de l’action humanitaire.",
+    points: [
+      'Notre histoire',
+      'Nos valeurs',
+      'Nos réalisations',
+      'Notre savoir-faire',
+    ],
+    image: '/assets/hf/land-hf.jpeg',
+  },
+
+  quickLinks: [
+    {
+      title: 'Notre histoire',
+      text:
+        "Une trajectoire construite sur l’engagement, la persévérance et la proximité avec les bénéficiaires depuis plus de 20 ans.",
+      path: '/a-propos#histoire',
+      image: '/assets/hf/history.jpeg',
+    },
+    {
+      title: 'Nos valeurs',
+      text:
+        "Intégrité, professionnalisme, dynamisme, rigueur et humilité constituent le socle de notre action.",
+      path: '/a-propos#values',
+      image: '/assets/hf/value.jpeg',
+    },
+    {
+      title: 'Nos réalisations',
+      text:
+        "Des initiatives, distinctions et actions concrètes qui témoignent de notre impact sur le terrain.",
+      path: '/a-propos#honors',
+      image: '/assets/hf/action.jpeg',
+    },
+    {
+      title: 'Notre savoir-faire',
+      text:
+        "Une expertise construite dans l’action communautaire, le plaidoyer, la santé et l’accompagnement des publics vulnérables.",
+      path: '/a-propos#expertise',
+      image: '/assets/hf/quick.jpeg',
+    },
+  ],
+
+  impact: {
+    label: 'Plus de 20 ans d’engagement et de leadership féminin',
+    title: 'Une trajectoire marquée par des étapes structurantes.',
+    text:
+      "La dynamique de Horizons Femmes s’inscrit dans le temps long, avec des jalons institutionnels, communautaires et programmatiques qui traduisent un engagement constant au service des communautés.",
+    years: [
+      {
+        year: '2026',
+        title: 'Migration en ONG',
+        text: "Migration du statut d’association à ONG.",
+      },
+      {
+        year: '2025',
+        title: 'Accord de collaboration',
+        text:
+          "Renouvellement et signature de l’accord avec le Ministère de la Santé Publique.",
+      },
+      {
+        year: '2024',
+        title: 'Centre médical',
+        text: 'Ouverture du centre médical.',
+      },
+      {
+        year: '2023',
+        title: 'Visite officielle',
+        text:
+          "Visite de l’ambassadeur itinérant de USAID/PEPFAR – Dr Nkengasong.",
+      },
+      {
+        year: '2021',
+        title: 'Unité mobile',
+        text:
+          "Acquisition de l’unité mobile de dépistage du VIH, hépatites et IST.",
+      },
+      {
+        year: '2020',
+        title: 'Antenne Sud',
+        text: "Ouverture de l’antenne du Sud.",
+      },
+      {
+        year: '2019',
+        title: 'Life Center Bafoussam',
+        text: "Inauguration du Drop-In Center « Life Center » Bafoussam.",
+      },
+      {
+        year: '2012',
+        title: 'Premier Life Center',
+        text:
+          "Inauguration du premier Drop-In Center « Life Center » Yaoundé.",
+      },
+      {
+        year: '2003',
+        title: 'Légalisation',
+        text: "Légalisation de l’association Horizons Femmes.",
+      },
+    ],
+  },
+
+  news: {
+    label: 'Restez informés',
+    title: 'Les actualités et temps forts de Horizons Femmes',
+    text:
+      "Retrouvez les informations les plus récentes, les temps forts institutionnels, les distinctions et les avancées majeures de l’organisation.",
+    featured: {
+      category: 'Organisation',
+      year: '2026',
+      title: 'Migration du statut d’association à ONG',
+      excerpt:
+        "Cette évolution institutionnelle marque une nouvelle étape dans le développement stratégique et la visibilité de Horizons Femmes.",
+      image: '/assets/hf/home/news-featured.jpg',
+    },
+    items: [
+      {
+        category: 'Partenariat',
+        year: '2025',
+        title:
+          'Renouvellement de l’accord avec le Ministère de la Santé Publique',
+        excerpt:
+          "Un renforcement majeur de la coopération institutionnelle autour de la santé communautaire.",
+        image: '/assets/hf/p1.jpeg',
+      },
+      {
+        category: 'Distinction',
+        year: '2025',
+        title: 'Prix Africain du leadership en Santé au Cameroun',
+        excerpt:
+          "Une reconnaissance de l’impact social des activités de Horizons Femmes à l’échelle nationale.",
+        image: '/assets/hf/p2.jpeg',
+      },
+      {
+        category: 'Santé',
+        year: '2024',
+        title: 'Ouverture du centre médical',
+        excerpt:
+          "Une avancée importante pour rapprocher des services de santé de qualité des communautés.",
+        image: '/assets/hf/p3.jpeg',
+      },
+    ],
+  },
+
+  projectsPreview: {
+    label: 'Initiatives en cours',
+    title: 'Des projets structurants portés au plus près des besoins.',
+    text:
+      "Horizons Femmes met en œuvre des projets concrets dans les domaines de la santé, de la protection, de l’accompagnement psychosocial, de l’autonomisation et du plaidoyer.",
+    featured: {
+      badge: 'Projet vedette',
+      title: 'SAGCO',
+      text:
+        "SAGCO est mis en avant comme projet vedette de l’accueil. Il illustre l’engagement de Horizons Femmes pour l’accès aux soins, la santé globale, les droits, la dignité et l’accompagnement des populations vulnérables à travers une approche de proximité et de mobilisation communautaire.",
+      image: '/assets/hf/logo-sago.png',
+      cta: 'Découvrir les initiatives',
+    },
+    items: [
+      {
+        badge: 'Protection de l’enfance',
+        title: 'COSMO',
+        text:
+          "Un projet qui renforce les systèmes de prise en charge des orphelins et enfants vulnérables ainsi que de leurs familles.",
+        image: '/assets/hf/logo-hf.png',
+      },
+      {
+        badge: 'Santé communautaire',
+        title: 'Proximité Plus',
+        text:
+          "Une initiative orientée vers le dépistage médicalisé, le renforcement des OBC et l’accès aux services adaptés.",
+        image: '/assets/hf/logo-hf.png',
+      },
+      {
+        badge: 'VIH & VBG',
+        title: 'CHILL',
+        text:
+          "Un projet qui renforce la prévention, les soins et le traitement du VIH avec une approche communautaire intégrée.",
+        image: '/assets/hf/logo-hf.png',
+      },
+      {
+        badge: 'Réponse humanitaire',
+        title: 'PASEPRO',
+        text:
+          "Une réponse de protection destinée aux populations déplacées par le conflit et aux communautés hôtes.",
+        image: '/assets/hf/logo-hf.png',
+      },
+    ],
+  },
+
+  partners: {
+    label: 'Partenaires',
+    title: 'Ils accompagnent et renforcent notre action.',
+    logos: [
+      { src: '/assets/hf/partenaires/image001.png', alt: 'Partenaire 1' },
+      { src: '/assets/hf/partenaires/image051.png', alt: 'Partenaire 2' },
+      { src: '/assets/hf/partenaires/image055.jpg', alt: 'Partenaire 3' },
+      { src: '/assets/hf/partenaires/image073.jpg', alt: 'Partenaire 4' },
+      { src: '/assets/hf/partenaires/image079.png', alt: 'Partenaire 5' },
+      { src: '/assets/hf/partenaires/image105.png', alt: 'Partenaire 6' },
+    ],
+  },
+
+  stayInformed: {
+    title: 'Restez informés',
+    text:
+      "Suivez les actions, les projets, les temps forts et les publications de Horizons Femmes à travers nos actualités et nos différentes ressources.",
+    primaryCta: 'Voir les actualités',
+    secondaryCta: 'Faire un don',
   },
 },
 
@@ -658,10 +753,10 @@ resourcesPage: {
       title: 'Guide de formation des pairs éducateurs',
       description:
         "Un support structuré autour de plusieurs modules pour renforcer les compétences des pairs éducateurs sur le leadership communautaire, les rôles et responsabilités, le VIH, la tuberculose et la santé sexuelle et reproductive.",
-      image: '/assets/hf/resources/guide-pairs.jpg',
+      image: '/assets/hf/livre.jpg',
       fileLabel: 'PDF',
       actionLabel: 'Télécharger le guide',
-      path: '/assets/hf/resources/guide-formation.pdf',
+      path: '/assets/hf/doc1.pdf',
     },
     {
       id: 'bibliotheque-terrain',
@@ -669,10 +764,10 @@ resourcesPage: {
       title: 'Bibliothèque de terrain et capitalisation',
       description:
         "Une collection de rapports, comptes rendus, fiches techniques, plaidoyers et documents utiles pour suivre les interventions et partager les expériences acquises sur le terrain.",
-      image: '/assets/hf/resources/bibliotheque.jpg',
+      image: '/assets/hf/quick.jpeg',
       fileLabel: 'Dossier',
       actionLabel: 'Voir la documentation',
-      path: '/assets/hf/resources/documentation.pdf',
+      path: '/assets/hf/doc1.pdf',
     },
     {
       id: 'outils-sensibilisation',
@@ -680,10 +775,10 @@ resourcesPage: {
       title: 'Outils de sensibilisation et d’accompagnement',
       description:
         "Des supports mobilisables pour les activités de prévention, d’orientation, d’information et d’accompagnement communautaire.",
-      image: '/assets/hf/resources/outils-sensibilisation.jpg',
+      image: '/assets/hf/quick.jpeg',
       fileLabel: 'Ressources',
       actionLabel: 'Accéder aux outils',
-      path: '/assets/hf/resources/outils-sensibilisation.pdf',
+      path: '/assets/hf/doc1.pdf',
     },
   ],
 
