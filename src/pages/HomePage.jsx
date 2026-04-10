@@ -14,6 +14,7 @@ export default function HomePage() {
   const news = page.news || { items: [] }
   const projectsPreview = page.projectsPreview || { items: [] }
   const partners = page.partners || { logos: [] }
+  const partnerLoop = [...partners.logos, ...partners.logos]
   const stayInformed = page.stayInformed || {}
 
   const slides =
@@ -490,37 +491,41 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+<section
+  id="partenaires-home"
+  className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+>
+  <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
+    <div className="max-w-3xl">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
+        {partners.label}
+      </p>
+      <h2 className="mt-4 text-3xl font-black text-slate-900">
+        {partners.title}
+      </h2>
+    </div>
 
-      <section
-        id="partenaires-home"
-        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
-      >
-        <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-              {partners.label}
-            </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
-              {partners.title}
-            </h2>
-          </div>
+    <div className="relative mt-8 overflow-hidden">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-24" />
 
-          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            {partners.logos.map((item) => (
-              <div
-                key={item.alt}
-                className="flex h-28 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4"
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="max-h-14 w-auto object-contain"
-                />
-              </div>
-            ))}
+      <div className="partner-marquee-track flex w-max gap-4 md:gap-6">
+        {partnerLoop.map((item, index) => (
+          <div
+            key={`${item.alt}-${index}`}
+            className="flex h-28 w-[220px] shrink-0 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4 md:w-[250px]"
+          >
+            <img
+              src={item.src}
+              alt={item.alt}
+              className="max-h-14 w-auto object-contain md:max-h-16"
+            />
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="rounded-[30px] bg-blue-900 p-8 text-white md:p-10">

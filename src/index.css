@@ -2,3 +2,20 @@
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes partnerMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-marquee-track {
+  animation: partnerMarquee 28s linear infinite;
+}
+
+.partner-marquee-track:hover {
+  animation-play-state: paused;
+}

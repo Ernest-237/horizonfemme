@@ -145,13 +145,13 @@ export default function AboutPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
               Objectifs
             </p>
-            <ul className="mt-4 space-y-3 text-slate-600">
-              {objectivesList.map((item) => (
-                <li key={item} className="leading-8">
-                  • {item}
-                </li>
-              ))}
-            </ul>
+            <ol className="mt-4 list-decimal space-y-3 pl-5 text-slate-600">
+  {objectivesList.map((item) => (
+    <li key={item} className="leading-8">
+      {item}
+    </li>
+  ))}
+</ol>
           </div>
 
           <div

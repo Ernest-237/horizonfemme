@@ -416,6 +416,12 @@ export const siteContent = {
       { src: '/assets/hf/partenaires/image073.jpg', alt: 'Partenaire 4' },
       { src: '/assets/hf/partenaires/image079.png', alt: 'Partenaire 5' },
       { src: '/assets/hf/partenaires/image105.png', alt: 'Partenaire 6' },
+      { src: '/assets/hf/partenaires/image069.jpg', alt: 'Partenaire 7' },
+      { src: '/assets/hf/partenaires/image071.png', alt: 'Partenaire 8' },
+      { src: '/assets/hf/partenaires/image053.png', alt: 'Partenaire 9' },
+      { src: '/assets/hf/partenaires/image005.png', alt: 'Partenaire 10' },
+      { src: '/assets/hf/partenaires/image037.png', alt: 'Partenaire 11' },
+      { src: '/assets/hf/partenaires/image025.jpg', alt: 'Partenaire 12' },
     ],
   },
 
@@ -436,7 +442,7 @@ export const siteContent = {
 
   heroBadge: 'Organisation • Histoire • Gouvernance',
   heroTitle:
-    "référence UNE ORGANISATION DE REFERENCE ENGAGEE OUR LES DROITS, LA DIGNITE ET L'AUTONOMISATION DES FEMMES, FILLES ET AUTRES POPULATIONS VULNERABLES.",
+    "UNE ORGANISATION DE REFERENCE ENGAGEE OUR LES DROITS, LA DIGNITE ET L'AUTONOMISATION DES FEMMES, FILLES ET AUTRES POPULATIONS VULNERABLES.",
   heroText:
     "Depuis plus de vingt ans, Horizons Femmes accompagne les mutations sociales en faveur de l’égalité des genres, avec un ancrage communautaire fort, une expertise reconnue et une présence active dans plusieurs régions du Cameroun.",
 
@@ -681,7 +687,7 @@ export const siteContent = {
 
 initiativesPage: {
   eyebrow: 'Nos initiatives',
-  title: 'Des projets concrets au service de la santé, de la protection et de l’autonomisation.',
+  title: 'Des projets concrets au service de la santé, de la protection et de autonomisation de la femme, jeune fille et autre populations vulnérables.',
   description:
     "Horizons Femmes conçoit et met en œuvre des projets qui répondent aux vulnérabilités des femmes, des jeunes filles, des enfants et des communautés affectées par le VIH, les crises humanitaires, les inégalités de genre et les difficultés d’accès aux services essentiels.",
 

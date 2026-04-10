@@ -1,4 +1,11 @@
 import { Link } from 'react-router-dom'
+import {
+  FaFacebookF,
+  FaXTwitter,
+  FaLinkedinIn,
+  FaYoutube,
+  FaTiktok,
+} from 'react-icons/fa6'
 export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -78,14 +85,14 @@ export default function ContactPage() {
                   htmlFor="subject"
                   className="mb-2 block text-sm font-semibold text-slate-700"
                 >
-                  Sujet *
+                  Objet *
                 </label>
                 <input
                   id="subject"
                   name="subject"
                   type="text"
                   required
-                  placeholder="Sujet de votre message"
+                  placeholder="Objet de votre message"
                   className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-blue-900"
                 />
               </div>
@@ -163,31 +170,52 @@ export default function ContactPage() {
                 </div>
 
                 <div className="rounded-[24px] bg-slate-50 p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-500">
-                    Suivez-nous
-                  </p>
+  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-500">
+    Suivez-nous
+  </p>
 
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <a
-                      href="#"
-                      className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
-                    >
-                      Facebook
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
-                    >
-                      Instagram
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <a
+      href="#"
+      aria-label="Facebook"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
+    >
+      <FaFacebookF className="text-lg" />
+    </a>
+
+    <a
+      href="#"
+      aria-label="Twitter"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
+    >
+      <FaXTwitter className="text-lg" />
+    </a>
+
+    <a
+      href="#"
+      aria-label="LinkedIn"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
+    >
+      <FaLinkedinIn className="text-lg" />
+    </a>
+
+    <a
+      href="#"
+      aria-label="YouTube"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
+    >
+      <FaYoutube className="text-lg" />
+    </a>
+
+    <a
+      href="#"
+      aria-label="TikTok"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-blue-900 hover:text-blue-900"
+    >
+      <FaTiktok className="text-lg" />
+    </a>
+  </div>
+</div>
               </div>
             </div>
 
