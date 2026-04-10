@@ -34,11 +34,9 @@ export default function HomePage() {
 
   useEffect(() => {
     if (slides.length <= 1) return
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 5500)
-
     return () => clearInterval(interval)
   }, [slides.length])
 
@@ -46,8 +44,12 @@ export default function HomePage() {
 
   return (
     <div className="space-y-10 pb-6 md:space-y-14">
+
+      {/* ── HERO — pleine hauteur, éléments centrés ── */}
       <section id="hero-home" className="relative w-full">
-        <div className="relative min-h-[60vh] overflow-hidden md:min-h-[68vh]">
+        <div className="relative min-h-screen overflow-hidden">
+
+          {/* Fond */}
           <div className="absolute inset-0">
             {slides.map((slide, index) => (
               <img
@@ -55,108 +57,103 @@ export default function HomePage() {
                 src={slide.image}
                 alt={slide.title}
                 className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ${
-                  index === currentSlide
-                    ? 'scale-100 opacity-100'
-                    : 'scale-105 opacity-0'
+                  index === currentSlide ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
                 }`}
               />
             ))}
-
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.82)_0%,rgba(2,6,23,0.72)_30%,rgba(15,23,42,0.46)_65%,rgba(15,23,42,0.30)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.88)_0%,rgba(2,6,23,0.78)_30%,rgba(15,23,42,0.52)_65%,rgba(15,23,42,0.35)_100%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.14),transparent_25%)]" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-[1440px] items-end px-4 py-6 md:min-h-[68vh] md:px-6 lg:px-8">
-            <div className="grid w-full items-end gap-8 lg:grid-cols-[1.03fr_0.97fr]">
-              <div className="max-w-4xl pb-3 text-white md:pb-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-200">
+          {/* Contenu — centré verticalement */}
+          <div className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] items-center px-4 py-20 md:px-6 lg:px-8">
+            <div className="grid w-full items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+
+              {/* Gauche — texte */}
+              <div className="max-w-3xl text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-orange-200">
                   {hero.eyebrow}
                 </p>
 
-                <h1 className="mt-3 text-3xl font-black leading-[0.95] tracking-tight md:text-5xl xl:text-6xl">
+                <h1 className="mt-3 text-2xl font-black leading-[1.08] tracking-tight md:text-3xl lg:text-4xl">
                   {hero.title}
                 </h1>
 
-                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-100">
+                <p className="mt-4 max-w-xl text-sm leading-7 text-slate-100">
                   {hero.description}
                 </p>
 
-                <p className="mt-3 max-w-2xl text-base leading-7 text-slate-200">
+                <p className="mt-2 max-w-xl text-sm leading-7 text-slate-200">
                   {hero.secondaryDescription}
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     to="/a-propos"
-                    className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
+                    className="rounded-full bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600"
                   >
                     {hero.primaryCta}
                   </Link>
-
                   <Link
                     to="/initiatives"
-                    className="rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
+                    className="rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
                   >
                     {hero.secondaryCta}
                   </Link>
                 </div>
               </div>
 
-              <div className="self-end lg:justify-self-end">
-                <div className="max-w-xl rounded-[28px] border border-white/15 bg-white/10 p-4 text-white backdrop-blur-md md:p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
+              {/* Droite — carte */}
+              <div className="lg:justify-self-end">
+                <div className="w-full max-w-sm rounded-[24px] border border-white/15 bg-white/10 p-4 text-white backdrop-blur-md">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-200">
                     {hero.cardTitle}
                   </p>
 
-                  <p className="mt-3 text-sm leading-7 text-blue-50">
+                  <p className="mt-2 text-xs leading-6 text-blue-50">
                     {hero.cardText}
                   </p>
 
-                  <div className="mt-4 rounded-[22px] border border-white/10 bg-white/8 p-4">
+                  <div className="mt-3 rounded-[18px] border border-white/10 bg-white/8 p-3">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-200">
                       {activeSlide.label}
                     </p>
-                    <h2 className="mt-2 text-xl font-black leading-tight">
+                    <h2 className="mt-1.5 text-base font-black leading-snug">
                       {activeSlide.title}
                     </h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-100">
+                    <p className="mt-1.5 text-xs leading-6 text-slate-100">
                       {activeSlide.text}
                     </p>
                   </div>
 
-                  <div className="mt-4 flex items-center justify-between gap-4">
+                  <div className="mt-3 flex items-center justify-between gap-4">
                     <div className="flex gap-2">
                       {slides.map((slide, index) => (
                         <button
                           key={slide.id}
                           type="button"
                           onClick={() => setCurrentSlide(index)}
-                          className={`h-3 rounded-full transition ${
-                            index === currentSlide
-                              ? 'w-10 bg-orange-400'
-                              : 'w-3 bg-white/40'
+                          className={`h-2.5 rounded-full transition ${
+                            index === currentSlide ? 'w-8 bg-orange-400' : 'w-2.5 bg-white/40'
                           }`}
                           aria-label={`Aller au slide ${index + 1}`}
                         />
                       ))}
                     </div>
-
-                    <p className="text-sm font-medium text-slate-200">
+                    <p className="text-xs font-medium text-slate-200">
                       {String(currentSlide + 1).padStart(2, '0')} /{' '}
                       {String(slides.length).padStart(2, '0')}
                     </p>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="edito-home"
-        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
-      >
+      <section id="edito-home" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
           <div className="relative min-h-[360px] overflow-hidden rounded-[30px] border border-slate-200 shadow-sm">
             <img
@@ -170,12 +167,8 @@ export default function HomePage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
                   {editorial.signatureLabel}
                 </p>
-                <p className="mt-2 text-base font-semibold">
-                  {editorial.signatureName}
-                </p>
-                <p className="text-sm text-slate-100">
-                  {editorial.signatureRole}
-                </p>
+                <p className="mt-2 text-base font-semibold">{editorial.signatureName}</p>
+                <p className="text-sm text-slate-100">{editorial.signatureRole}</p>
               </div>
             </div>
           </div>
@@ -184,10 +177,7 @@ export default function HomePage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
               {editorial.label}
             </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
-              {editorial.title}
-            </h2>
-
+            <h2 className="mt-4 text-3xl font-black text-slate-900">{editorial.title}</h2>
             <div className="mt-6 space-y-5 text-lg leading-8 text-slate-600">
               {editorial.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -197,38 +187,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="about-home"
-        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
-      >
+      <section id="about-home" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1.06fr_0.94fr]">
           <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
               {aboutSection.label}
             </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
-              {aboutSection.title}
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">
-              {aboutSection.text}
-            </p>
-
+            <h2 className="mt-4 text-3xl font-black text-slate-900">{aboutSection.title}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{aboutSection.text}</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {aboutSection.points.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[18px] bg-slate-50 px-4 py-4 text-sm font-medium text-slate-700"
-                >
+                <div key={item} className="rounded-[18px] bg-slate-50 px-4 py-4 text-sm font-medium text-slate-700">
                   {item}
                 </div>
               ))}
             </div>
-
             <div className="mt-7">
-              <Link
-                to="/a-propos"
-                className="inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white"
-              >
+              <Link to="/a-propos" className="inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white">
                 Découvrir l'ONG
               </Link>
             </div>
@@ -264,7 +239,6 @@ export default function HomePage() {
                   <p className="text-2xl font-black text-white">{item.title}</p>
                 </div>
               </div>
-
               <div className="p-5">
                 <p className="leading-7 text-slate-600">{item.text}</p>
               </div>
@@ -273,36 +247,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="impact-home"
-        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
-      >
+      <section id="impact-home" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-              {impact.label}
-            </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
-              {impact.title}
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              {impact.text}
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">{impact.label}</p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">{impact.title}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{impact.text}</p>
           </div>
-
           <div className="mt-8 overflow-x-auto">
             <div className="flex min-w-max gap-4 pb-2">
               {impact.years.map((item) => (
-                <div
-                  key={`${item.year}-${item.title}`}
-                  className="w-[290px] rounded-[24px] border border-slate-200 bg-slate-50 p-5"
-                >
-                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">
-                    {item.year}
-                  </p>
-                  <h3 className="mt-3 text-xl font-black text-slate-900">
-                    {item.title}
-                  </h3>
+                <div key={`${item.year}-${item.title}`} className="w-[290px] rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-500">{item.year}</p>
+                  <h3 className="mt-3 text-xl font-black text-slate-900">{item.title}</h3>
                   <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
                 </div>
               ))}
@@ -311,27 +268,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="actualites-home"
-        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
-      >
+      <section id="actualites-home" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-              {news.label}
-            </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
-              {news.title}
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              {news.text}
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">{news.label}</p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">{news.title}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{news.text}</p>
           </div>
-
-          <Link
-            to="/actualites"
-            className="hidden rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 lg:inline-flex"
-          >
+          <Link to="/actualites" className="hidden rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 lg:inline-flex">
             Voir toutes les actualités
           </Link>
         </div>
@@ -339,64 +283,31 @@ export default function HomePage() {
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
             <div className="h-[320px] overflow-hidden">
-              <img
-                src={news.featured?.image}
-                alt={news.featured?.title}
-                className="h-full w-full object-cover"
-              />
+              <img src={news.featured?.image} alt={news.featured?.title} className="h-full w-full object-cover" />
             </div>
-
             <div className="p-6 md:p-7">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">
-                  {news.featured?.category}
-                </span>
-                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-900">
-                  {news.featured?.year}
-                </span>
+                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">{news.featured?.category}</span>
+                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-900">{news.featured?.year}</span>
               </div>
-
-              <h3 className="mt-4 text-3xl font-black leading-tight text-slate-900">
-                {news.featured?.title}
-              </h3>
-
-              <p className="mt-4 text-lg leading-8 text-slate-600">
-                {news.featured?.excerpt}
-              </p>
+              <h3 className="mt-4 text-3xl font-black leading-tight text-slate-900">{news.featured?.title}</h3>
+              <p className="mt-4 text-lg leading-8 text-slate-600">{news.featured?.excerpt}</p>
             </div>
           </article>
 
           <div className="space-y-6">
             {news.items.map((item) => (
-              <article
-                key={item.title}
-                className="grid gap-4 rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-[140px_1fr]"
-              >
+              <article key={item.title} className="grid gap-4 rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-[140px_1fr]">
                 <div className="overflow-hidden rounded-[18px]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full min-h-[120px] w-full object-cover"
-                  />
+                  <img src={item.image} alt={item.title} className="h-full min-h-[120px] w-full object-cover" />
                 </div>
-
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
-                      {item.category}
-                    </span>
-                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-900">
-                      {item.year}
-                    </span>
+                    <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">{item.category}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-900">{item.year}</span>
                   </div>
-
-                  <h3 className="mt-3 text-xl font-black leading-tight text-slate-900">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 leading-7 text-slate-600">
-                    {item.excerpt}
-                  </p>
+                  <h3 className="mt-3 text-xl font-black leading-tight text-slate-900">{item.title}</h3>
+                  <p className="mt-3 leading-7 text-slate-600">{item.excerpt}</p>
                 </div>
               </article>
             ))}
@@ -404,27 +315,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="initiatives-home"
-        className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
-      >
+      <section id="initiatives-home" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-              {projectsPreview.label}
-            </p>
-            <h2 className="mt-4 text-3xl font-black text-slate-900">
-              {projectsPreview.title}
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              {projectsPreview.text}
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">{projectsPreview.label}</p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">{projectsPreview.title}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{projectsPreview.text}</p>
           </div>
-
-          <Link
-            to="/initiatives"
-            className="hidden rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 lg:inline-flex"
-          >
+          <Link to="/initiatives" className="hidden rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 lg:inline-flex">
             Voir les initiatives
           </Link>
         </div>
@@ -432,32 +330,15 @@ export default function HomePage() {
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <article className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
             <div className="h-[320px] overflow-hidden">
-              <img
-                src={projectsPreview.featured?.image}
-                alt={projectsPreview.featured?.title}
-                className="h-full w-full object-cover"
-              />
+              <img src={projectsPreview.featured?.image} alt={projectsPreview.featured?.title} className="h-full w-full object-cover" />
             </div>
-
             <div className="p-6 md:p-7">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">
-                  {projectsPreview.featured?.badge}
-                </span>
+                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">{projectsPreview.featured?.badge}</span>
               </div>
-
-              <h3 className="mt-4 text-3xl font-black leading-tight text-slate-900">
-                {projectsPreview.featured?.title}
-              </h3>
-
-              <p className="mt-4 text-lg leading-8 text-slate-600">
-                {projectsPreview.featured?.text}
-              </p>
-
-              <Link
-                to="/initiatives"
-                className="mt-6 inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white"
-              >
+              <h3 className="mt-4 text-3xl font-black leading-tight text-slate-900">{projectsPreview.featured?.title}</h3>
+              <p className="mt-4 text-lg leading-8 text-slate-600">{projectsPreview.featured?.text}</p>
+              <Link to="/initiatives" className="mt-6 inline-flex rounded-full bg-blue-900 px-6 py-3 text-sm font-semibold text-white">
                 {projectsPreview.featured?.cta}
               </Link>
             </div>
@@ -465,25 +346,13 @@ export default function HomePage() {
 
           <div className="grid gap-6 md:grid-cols-2">
             {projectsPreview.items.map((item) => (
-              <article
-                key={item.title}
-                className="overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-sm"
-              >
+              <article key={item.title} className="overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-sm">
                 <div className="h-44 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
                 </div>
-
                 <div className="p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-                    {item.badge}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-black leading-tight text-slate-900">
-                    {item.title}
-                  </h3>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">{item.badge}</p>
+                  <h3 className="mt-3 text-2xl font-black leading-tight text-slate-900">{item.title}</h3>
                   <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
                 </div>
               </article>
@@ -491,61 +360,36 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-<section
-  id="partenaires-home"
-  className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
->
-  <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
-    <div className="max-w-3xl">
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">
-        {partners.label}
-      </p>
-      <h2 className="mt-4 text-3xl font-black text-slate-900">
-        {partners.title}
-      </h2>
-    </div>
 
-    <div className="relative mt-8 overflow-hidden">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-24" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-24" />
-
-      <div className="partner-marquee-track flex w-max gap-4 md:gap-6">
-        {partnerLoop.map((item, index) => (
-          <div
-            key={`${item.alt}-${index}`}
-            className="flex h-28 w-[220px] shrink-0 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4 md:w-[250px]"
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
-              className="max-h-14 w-auto object-contain md:max-h-16"
-            />
+      <section id="partenaires-home" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm md:p-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">{partners.label}</p>
+            <h2 className="mt-4 text-3xl font-black text-slate-900">{partners.title}</h2>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+          <div className="relative mt-8 overflow-hidden">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-24" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-24" />
+            <div className="partner-marquee-track flex w-max gap-4 md:gap-6">
+              {partnerLoop.map((item, index) => (
+                <div key={`${item.alt}-${index}`} className="flex h-28 w-[220px] shrink-0 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4 md:w-[250px]">
+                  <img src={item.src} alt={item.alt} className="max-h-14 w-auto object-contain md:max-h-16" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="rounded-[30px] bg-blue-900 p-8 text-white md:p-10">
           <h2 className="text-3xl font-black">{stayInformed.title}</h2>
-          <p className="mt-4 max-w-3xl leading-8 text-blue-50">
-            {stayInformed.text}
-          </p>
-
+          <p className="mt-4 max-w-3xl leading-8 text-blue-50">{stayInformed.text}</p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              to="/actualites"
-              className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-900"
-            >
+            <Link to="/actualites" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-900">
               {stayInformed.primaryCta}
             </Link>
-
-            <Link
-              to="/don"
-              className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white"
-            >
+            <Link to="/don" className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white">
               {stayInformed.secondaryCta}
             </Link>
           </div>
