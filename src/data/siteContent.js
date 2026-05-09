@@ -442,7 +442,7 @@ export const siteContent = {
 
   heroBadge: 'Organisation • Histoire • Gouvernance',
   heroTitle:
-    "UNE ORGANISATION DE REFERENCE ENGAGEE OUR LES DROITS, LA DIGNITE ET L'AUTONOMISATION DES FEMMES, FILLES ET AUTRES POPULATIONS VULNERABLES.",
+    "UNE ORGANISATION DE REFERENCE ENGAGEE POUR LES DROITS, LA DIGNITE ET L'AUTONOMISATION DES FEMMES, FILLES ET AUTRES POPULATIONS VULNERABLES.",
   heroText:
     "Depuis plus de vingt ans, Horizons Femmes accompagne les mutations sociales en faveur de l’égalité des genres, avec un ancrage communautaire fort, une expertise reconnue et une présence active dans plusieurs régions du Cameroun.",
 

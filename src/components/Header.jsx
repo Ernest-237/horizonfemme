@@ -11,6 +11,23 @@ function navLinkClass(isActive) {
     : 'text-slate-600 hover:text-blue-900 transition'
 }
 
+// Helper pour rendre soit un <Link> (route React) soit un <a> (ancre / externe)
+function ChildLink({ child, onClick, className }) {
+  const isRoute = child.isRoute === true
+  if (isRoute) {
+    return (
+      <Link to={child.href} onClick={onClick} className={className}>
+        {child.label}
+      </Link>
+    )
+  }
+  return (
+    <a href={child.href} onClick={onClick} className={className}>
+      {child.label}
+    </a>
+  )
+}
+
 export default function Header() {
   const { locale, setLocale } = useLanguage()
   const content = useSiteContent()
@@ -64,7 +81,8 @@ export default function Header() {
       label: 'Nos initiatives',
       path: '/initiatives',
       children: [
-        { label: 'SAGCO', href: '/initiatives#sagco' },
+        // SAGCO ouvre le sous-site complet, pas une simple ancre
+        { label: 'SAGCO', href: '/sagco', isRoute: true },
         { label: 'AWDF', href: '/initiatives#awdf' },
         { label: 'Proximité Plus', href: '/initiatives#proximite-plus' },
         {
@@ -82,10 +100,6 @@ export default function Header() {
         { label: 'Opportunités', href: '/ressources#opportunites' },
       ],
     },
-    /* {
-      label: content?.nav?.testimonials || 'Témoignages',
-      path: '/temoignages',
-    }, */
     {
       label: 'Multimédiateque',
       path: '/mediatheque',
@@ -93,8 +107,7 @@ export default function Header() {
         { label: 'Photothèque', href: '/mediatheque#phototheque' },
         { label: 'Vidéothèque', href: '/mediatheque#videotheque' },
       ],
-    }, 
-
+    },
     {
       label: content?.nav?.contact || 'Contact',
       path: '/contact',
@@ -166,13 +179,11 @@ export default function Header() {
                 <div className="absolute left-1/2 top-full z-30 mt-4 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
                   <div className="space-y-1">
                     {item.children.map((child) => (
-                      <a
+                      <ChildLink
                         key={child.label}
-                        href={child.href}
+                        child={child}
                         className="block rounded-xl px-3 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-blue-900"
-                      >
-                        {child.label}
-                      </a>
+                      />
                     ))}
                   </div>
                 </div>
@@ -265,17 +276,15 @@ export default function Header() {
                     {item.children && mobileSection === item.label ? (
                       <div className="space-y-1 border-t border-slate-200 bg-white px-4 pb-4 pt-3">
                         {item.children.map((child) => (
-                          <a
+                          <ChildLink
                             key={child.label}
-                            href={child.href}
+                            child={child}
                             onClick={() => {
                               setMobileOpen(false)
                               setMobileSection(null)
                             }}
                             className="block rounded-xl px-3 py-3 text-sm text-slate-700 hover:bg-slate-50"
-                          >
-                            {child.label}
-                          </a>
+                          />
                         ))}
                       </div>
                     ) : null}
