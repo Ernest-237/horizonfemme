@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useSiteContent } from '../hooks/useSiteContent'
 
-const NAVBAR_LOGO = '/assets/hf/logo.jpeg'
+const NAVBAR_LOGO = '/assets/hf/logo-hf.png'
 
 /* Icône chevron propre */
 function ChevronDown({ className = '' }) {
