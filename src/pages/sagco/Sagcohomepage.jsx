@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import SilhouetteFiligree from '../../components/sagco/SilhouetteFiligree'
 
-const HERO_IMAGE = 'https://femme.kdllogiscargo.com/assets/images/d.jpg'
+const HERO_IMAGE = '../../public/assets/hf/sagco-p.png'
 
 const objectives = [
   {

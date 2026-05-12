@@ -43,14 +43,13 @@ export default function SagcoHeader() {
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 md:px-6 xl:px-8">
         {/* Logo SAGCO — respecte la charte (couleurs officielles) */}
         <Link to="/sagco" className="flex min-w-0 shrink-0 items-center gap-3">
-          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#F4952F] bg-white shadow-sm">
-            <span
-              className="text-base font-black tracking-tight"
-              style={{ color: HF_BLUE }}
-            >
-              S
-            </span>
-          </div>
+         <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#F4952F] bg-white shadow-sm">
+  <img
+    src="../public/assets/hf/logo-sago.png"
+    alt="Logo SAGCO"
+    className="h-full w-full object-cover"
+  />
+</div>
           <div className="min-w-0">
             <p
               className="whitespace-nowrap text-lg font-black tracking-tight"
@@ -61,7 +60,7 @@ export default function SagcoHeader() {
             <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">
               Santé Globale des Copines
             </p>
-          </div>
+          </div> 
         </Link>
 
         {/* Desktop nav */}
