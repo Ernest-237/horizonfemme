@@ -371,7 +371,7 @@ export const siteContent = {
       title: 'SAGCO',
       text:
         "SAGCO est mis en avant comme projet vedette de l’accueil. Il illustre l’engagement de Horizons Femmes pour l’accès aux soins, la santé globale, les droits, la dignité et l’accompagnement des populations vulnérables à travers une approche de proximité et de mobilisation communautaire.",
-      image: '/assets/hf/logo-sago.png',
+      image: '/assets/hf/f.jpg',
       cta: 'Découvrir les initiatives',
     },
     items: [
@@ -380,28 +380,28 @@ export const siteContent = {
         title: 'COSMO',
         text:
           "Un projet qui renforce les systèmes de prise en charge des orphelins et enfants vulnérables ainsi que de leurs familles.",
-        image: '/assets/hf/logo-hf.png',
+        image: '/assets/hf/perfect.jpeg',
       },
       {
         badge: 'Santé communautaire',
         title: 'Proximité Plus',
         text:
           "Une initiative orientée vers le dépistage médicalisé, le renforcement des OBC et l’accès aux services adaptés.",
-        image: '/assets/hf/logo-hf.png',
+        image: '/assets/hf/perfect.jpeg',
       },
       {
         badge: 'VIH & VBG',
         title: 'CHILL',
         text:
           "Un projet qui renforce la prévention, les soins et le traitement du VIH avec une approche communautaire intégrée.",
-        image: '/assets/hf/logo-hf.png',
+        image: '/assets/hf/perfect.jpeg',
       },
       {
         badge: 'Réponse humanitaire',
         title: 'PASEPRO',
         text:
           "Une réponse de protection destinée aux populations déplacées par le conflit et aux communautés hôtes.",
-        image: '/assets/hf/logo-hf.png',
+        image: '/assets/hf/perfect.jpeg',
       },
     ],
   },

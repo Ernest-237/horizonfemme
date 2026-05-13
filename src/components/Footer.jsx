@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useSiteContent } from '../hooks/useSiteContent'
 import SilhouetteFiligree from './sagco/SilhouetteFiligree'
 
-const FOOTER_LOGO = '/assets/hf/logo-hf.png'
+const FOOTER_LOGO = '/assets/hf/logo-hf.jpeg'
 const FOOTER_BG = '/assets/hf/footer-hf.jpeg'
 
 export default function Footer() {
@@ -30,11 +30,11 @@ export default function Footer() {
         {/* === Bandeau du haut : logo + slogan officiel === */}
         <div className="flex flex-col items-start gap-6 border-b-2 border-hf-orange/50 pb-10 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-4">
-            <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/10 p-2 backdrop-blur-sm">
+            <div className="overflow-hidden  backdrop-blur-sm">
               <img
                 src={FOOTER_LOGO}
                 alt="Logo Horizons Femmes"
-                className="h-14 w-14 object-contain md:h-16 md:w-16"
+                className="h-14 w-14 object-contain md:h-16 FOOTER_LOGO"
               />
             </div>
 

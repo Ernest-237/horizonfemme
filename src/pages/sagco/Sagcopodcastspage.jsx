@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SilhouetteFiligree from '../../components/sagco/SilhouetteFiligree'
+
 
 const HERO_IMAGE = 'https://femme.kdllogiscargo.com/assets/images/IMG_5075.JPG'
 
@@ -18,9 +18,7 @@ export default function SagcoPodcastsPage() {
           <img src={HERO_IMAGE} alt="" className="h-full w-full object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1B3F8C] via-[#1B3F8C]/85 to-[#1B3F8C]/40" />
         </div>
-        <div className="pointer-events-none absolute -right-20 top-0 h-full w-[500px]">
-          <SilhouetteFiligree color="#ffffff" opacity={0.18} className="h-full w-full" />
-        </div>
+       
 
         <div className="relative mx-auto max-w-[1440px] px-4 py-20 md:px-6 md:py-28 xl:px-8">
           <nav className="flex items-center gap-2 text-xs text-slate-200">
@@ -55,9 +53,7 @@ export default function SagcoPodcastsPage() {
           </div>
 
           <div className="relative mt-14 overflow-hidden rounded-3xl border-2 border-[#F4952F]/30 bg-[#F4952F]/5 p-10 text-center md:p-16">
-            <div className="pointer-events-none absolute -right-12 -top-12 h-[260px] w-[260px]">
-              <SilhouetteFiligree color="#1B3F8C" opacity={0.08} className="h-full w-full" />
-            </div>
+            
             <div className="relative">
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-[3px] border-[#F4952F] bg-[#1B3F8C] text-3xl shadow-lg">
                 🎧
@@ -125,9 +121,7 @@ export default function SagcoPodcastsPage() {
       <section className="bg-white py-20 md:py-24">
         <div className="mx-auto max-w-[1100px] px-4 md:px-6 xl:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-[#1B3F8C] p-10 text-white shadow-2xl md:p-14">
-            <div className="pointer-events-none absolute -right-10 -bottom-10 h-[280px] w-[280px]">
-              <SilhouetteFiligree color="#F4952F" opacity={0.2} className="h-full w-full" />
-            </div>
+            
             <div className="relative grid items-center gap-8 md:grid-cols-[2fr,1fr]">
               <div>
                 <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#F4952F]">

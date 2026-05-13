@@ -45,9 +45,9 @@ export default function SagcoHeader() {
         <Link to="/sagco" className="flex min-w-0 shrink-0 items-center gap-3">
          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#F4952F] bg-white shadow-sm">
   <img
-    src="../public/assets/hf/logo-sago.png"
+    src="./public/assets/hf/logo-sago.png"
     alt="Logo SAGCO"
-    className="h-full w-full object-cover"
+    className=""
   />
 </div>
           <div className="min-w-0">

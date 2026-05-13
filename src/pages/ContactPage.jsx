@@ -444,7 +444,7 @@ export default function ContactPage() {
               Mini-ferme Melen, Yaoundé, Cameroun
             </p>
             <a
-              href="https://maps.app.goo.gl/Hw59ytzhuDkiU5XFA"
+              href="https://maps.app.goo.gl/iszJ3vdVxcd7azSz8"
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 rounded-full border-2 border-hf-blue bg-white px-4 py-2 text-xs font-bold text-hf-blue transition hover:bg-hf-blue hover:text-white"

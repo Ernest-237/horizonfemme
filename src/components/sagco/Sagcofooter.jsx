@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom'
-import SilhouetteFiligree from './SilhouetteFiligree'
+
 
 export default function SagcoFooter() {
   return (
     <footer className="relative overflow-hidden bg-[#1B3F8C] text-slate-100">
       {/* Filigrane silhouette en bas à droite */}
-      <div className="pointer-events-none absolute -right-20 -bottom-10 h-[420px] w-[420px]">
-        <SilhouetteFiligree color="#ffffff" opacity={0.08} className="h-full w-full" />
-      </div>
+      
 
       <div className="relative mx-auto max-w-[1440px] px-4 py-14 md:px-6 xl:px-8">
         <div className="grid gap-10 lg:grid-cols-4">

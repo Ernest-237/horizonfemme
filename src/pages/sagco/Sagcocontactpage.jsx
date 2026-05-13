@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import SilhouetteFiligree from '../../components/sagco/SilhouetteFiligree'
+
 
 const HERO_IMAGE =
   'https://femme.kdllogiscargo.com/assets/images/WhatsApp%20Image%202026-01-26%20at%2003.17.50.jpeg'
@@ -36,9 +36,7 @@ export default function SagcoContactPage() {
           <img src={HERO_IMAGE} alt="" className="h-full w-full object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1B3F8C] via-[#1B3F8C]/85 to-[#1B3F8C]/40" />
         </div>
-        <div className="pointer-events-none absolute -right-20 top-0 h-full w-[500px]">
-          <SilhouetteFiligree color="#ffffff" opacity={0.18} className="h-full w-full" />
-        </div>
+      
 
         <div className="relative mx-auto max-w-[1440px] px-4 py-20 md:px-6 md:py-28 xl:px-8">
           <nav className="flex items-center gap-2 text-xs text-slate-200">

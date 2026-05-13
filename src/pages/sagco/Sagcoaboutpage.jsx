@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SilhouetteFiligree from '../../components/sagco/SilhouetteFiligree'
+
 
 const HERO_IMAGE =
   'https://femme.kdllogiscargo.com/assets/images/WhatsApp%20Image%202025-07-09%20at%2017.42.26.jpeg'
@@ -36,9 +36,27 @@ const zones = [
 ]
 
 const actors = [
-  { role: 'Organisme Porteur', name: 'Horizons Femmes', desc: 'ONG œuvrant pour la santé et les droits des femmes.' },
-  { role: 'Partenaire Opérationnel', name: 'Moto Action Cameroun', desc: 'Acteur clé pour le déploiement des activités sur le terrain.' },
-  { role: 'Financement', name: 'Expertise France', desc: 'Agence publique de coopération technique internationale française.' },
+  {
+    role: 'Organisme Porteur',
+    name: 'Horizons Femmes',
+    desc: 'ONG œuvrant pour la santé et les droits des femmes.',
+    image: './../assets/hf/logo-sago.jpeg',
+    website: 'https://horizonsfemmes.org',
+  },
+  {
+    role: 'Partenaire Opérationnel',
+    name: 'Moto Action Cameroun',
+    desc: 'Acteur clé pour le déploiement des activités sur le terrain.',
+    image: './../assets/hf/partenaires/image101.png',
+    website: 'https://motoaction.org',
+  },
+  {
+    role: 'Financement',
+    name: 'Expertise France',
+    desc: 'Agence publique de coopération technique internationale française.',
+    image: './../assets/hf/partenaires/image101.png',
+    website: 'https://www.expertisefrance.fr',
+  },
 ]
 
 export default function SagcoAboutPage() {
@@ -50,9 +68,7 @@ export default function SagcoAboutPage() {
           <img src={HERO_IMAGE} alt="" className="h-full w-full object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1B3F8C] via-[#1B3F8C]/85 to-[#1B3F8C]/40" />
         </div>
-        <div className="pointer-events-none absolute -right-20 top-0 h-full w-[500px]">
-          <SilhouetteFiligree color="#ffffff" opacity={0.18} className="h-full w-full" />
-        </div>
+      
 
         <div className="relative mx-auto max-w-[1440px] px-4 py-20 md:px-6 md:py-28 xl:px-8">
           <nav className="flex items-center gap-2 text-xs text-slate-200">
@@ -70,9 +86,7 @@ export default function SagcoAboutPage() {
       <section className="bg-white py-20 md:py-24">
         <div className="mx-auto max-w-[1100px] px-4 md:px-6 xl:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-[#1B3F8C] p-8 text-white shadow-xl md:p-12">
-            <div className="pointer-events-none absolute -right-12 -bottom-12 h-[260px] w-[260px]">
-              <SilhouetteFiligree color="#F4952F" opacity={0.2} className="h-full w-full" />
-            </div>
+            
             <div className="relative">
               <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#F4952F]">
                 Objectif Général
@@ -183,22 +197,34 @@ export default function SagcoAboutPage() {
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {actors.map((a) => (
-              <div
-                key={a.name}
-                className="group overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#F4952F] hover:shadow-xl"
-              >
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-[3px] border-[#F4952F] bg-[#1B3F8C] text-2xl font-black text-white shadow-lg">
-                  {a.name.charAt(0)}
-                </div>
-                <p className="mt-5 text-xs font-bold uppercase tracking-wider text-[#F4952F]">
-                  {a.role}
-                </p>
-                <h3 className="mt-2 text-xl font-black text-[#1B3F8C]">
-                  {a.name}
-                </h3>
-                <p className="mt-3 text-sm text-slate-600">{a.desc}</p>
-              </div>
-            ))}
+  <a
+    key={a.name}
+    href={a.website}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group block overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#F4952F] hover:shadow-xl"
+  >
+    <div className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#F4952F] bg-white shadow-lg transition duration-300 group-hover:scale-105">
+      <img
+        src={a.image}
+        alt={a.name}
+        className="h-full w-full object-contain"
+      />
+    </div>
+
+    <p className="mt-5 text-xs font-bold uppercase tracking-wider text-[#F4952F]">
+      {a.role}
+    </p>
+
+    <h3 className="mt-2 text-xl font-black text-[#1B3F8C]">
+      {a.name}
+    </h3>
+
+    <p className="mt-3 text-sm text-slate-600">
+      {a.desc}
+    </p>
+  </a>
+))}
           </div>
         </div>
       </section>

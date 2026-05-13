@@ -11,7 +11,7 @@ const articles = [
       'Lancement officiel du projet CEPU : renforcer le dialogue pour les droits humains au Cameroun',
     excerpt:
       "Horizons Femmes a pris part, aux côtés de Search for Common Ground, à l’atelier de lancement officiel du projet CEPU-CMR à l’Hôtel Mont Fébé. Mis en œuvre sur 36 mois et couvrant l’ensemble du territoire national, ce projet vise à renforcer le dialogue entre la société civile et les institutions publiques, avec un accent sur l’inclusion des femmes et des jeunes filles, la promotion des droits humains et la mise en œuvre des recommandations issues de l’Examen Périodique Universel.",
-    image: '/assets/hf/logo-hf.png',
+    image: '/assets/hf/actuu.jpeg',
   },
   {
     id: 'expertise-france',
@@ -49,7 +49,7 @@ const articles = [
       'Horizons Femmes au 1er Forum sur les soins de santé primaires au Palais des Sports de Yaoundé',
     excerpt:
       "À l’occasion du premier Forum sur les soins de santé primaires organisé par le Ministère de la Santé Publique, Horizons Femmes a pris part aux échanges à travers un stand, une communication orale et plusieurs posters. Cette participation a permis de mettre en lumière les enjeux de santé communautaire, de prévention du VIH, ainsi que la nécessité d’un accès équitable aux soins pour les femmes et les jeunes filles.",
-    image: '/assets/hf/logo-hf.png',
+    image: '/assets/hf/soin.jpeg',
   },
   {
     id: 'jm-vih',

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import SilhouetteFiligree from '../../components/sagco/SilhouetteFiligree'
 
-const HERO_IMAGE = '../../public/assets/hf/sagco-p.png'
+
+const HERO_IMAGE = '../../public/assets/hf/plan-sago.jpeg'
 
 const objectives = [
   {
@@ -52,9 +52,7 @@ export default function SagcoHomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#1B3F8C] via-[#1B3F8C]/85 to-[#1B3F8C]/40" />
         </div>
         {/* Filigrane silhouette (15-20% opacity comme demandé par la charte) */}
-        <div className="pointer-events-none absolute -right-20 top-0 h-full w-[500px]">
-          <SilhouetteFiligree color="#ffffff" opacity={0.18} className="h-full w-full" />
-        </div>
+  
 
         <div className="relative mx-auto max-w-[1440px] px-4 py-24 md:px-6 md:py-32 xl:px-8 xl:py-40">
           <span className="inline-flex items-center rounded-full border-2 border-[#F4952F] bg-[#F4952F]/15 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#F4952F]">
@@ -129,9 +127,7 @@ export default function SagcoHomePage() {
 
       {/* PARTNERS & ZONES — fond bleu marine avec filigrane */}
       <section className="relative overflow-hidden bg-[#1B3F8C] py-20 text-white md:py-24">
-        <div className="pointer-events-none absolute -left-32 top-1/2 h-[600px] w-[600px] -translate-y-1/2">
-          <SilhouetteFiligree color="#ffffff" opacity={0.06} className="h-full w-full" />
-        </div>
+       
 
         <div className="relative mx-auto max-w-[1200px] px-4 md:px-6 xl:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
@@ -206,9 +202,7 @@ export default function SagcoHomePage() {
       <section className="bg-white py-20 md:py-24">
         <div className="mx-auto max-w-[1100px] px-4 md:px-6 xl:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-[#1B3F8C] p-10 text-white shadow-2xl md:p-14">
-            <div className="pointer-events-none absolute -right-10 -bottom-10 h-[280px] w-[280px]">
-              <SilhouetteFiligree color="#F4952F" opacity={0.2} className="h-full w-full" />
-            </div>
+           
             <div className="relative grid items-center gap-8 md:grid-cols-[2fr,1fr]">
               <div>
                 <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#F4952F]">

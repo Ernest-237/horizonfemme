@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
-import SilhouetteFiligree from '../../components/sagco/SilhouetteFiligree'
+
 
 const HERO_IMAGE =
   'https://femme.kdllogiscargo.com/assets/images/WhatsApp%20Image%202025-11-26%20at%2015.07.20.jpeg'
@@ -19,12 +19,120 @@ const photos = [
 
 const categories = ['Tout voir', 'Sensibilisation', 'Formations', 'Terrain']
 
+/*
+  ─────────────────────────────────────────────────────────────────
+  COMMENT AJOUTER UN LIEN VIDÉO :
+
+  1. Va sur la vidéo YouTube → Partager → Intégrer
+  2. Dans le <iframe>, copie uniquement le contenu de src="..."
+     Exemple : src="https://www.youtube.com/embed/IDENTIFIANT"
+  3. Colle ce lien dans le champ `src` ci-dessous
+
+  Si tu n'as pas encore de vidéo → laisse src: null
+  La card affichera un placeholder élégant au lieu d'un player vide.
+
+  Tu peux aussi mettre un lien Vimeo :
+  https://player.vimeo.com/video/IDENTIFIANT
+  ─────────────────────────────────────────────────────────────────
+*/
 const videos = [
-  { title: 'Vidéo 1 : Présentation', desc: 'Description de la vidéo à ajouter.' },
-  { title: 'Vidéo 2 : Témoignages', desc: 'Description de la vidéo à ajouter.' },
-  { title: 'Vidéo 3 : Activités Terrain', desc: 'Description de la vidéo à ajouter.' },
-  { title: 'Vidéo 4 : Événements', desc: 'Description de la vidéo à ajouter.' },
+  {
+    title: 'Présentation du projet SAGCO',
+    desc: "Découvrez les objectifs, les partenaires et l'approche du projet.",
+    badge: 'Présentation',
+    src: "https://youtu.be/Zez0_Q0ocZ8?si=Z4Fi4AoJ7A33uU7E", // ← Remplace null par ton lien embed YouTube
+  },
+  {
+    title: 'Témoignages de terrain',
+    desc: 'Les voix des bénéficiaires et des pairs éducateurs engagés dans le projet.',
+    badge: 'Témoignages',
+    src: "https://youtu.be/-YL-6DFm0Gg?si=J0AAmCfjYD5kF-eT", // ← Remplace null par ton lien embed YouTube
+  },
+  {
+    title: 'Activités terrain',
+    desc: 'Campagnes de sensibilisation, consultations mobiles et distribution de kits.',
+    badge: 'Terrain',
+    src: null, // ← Remplace null par ton lien embed YouTube
+  },
+  {
+    title: 'Événements & formations',
+    desc: 'Ateliers de formation des pairs éducateurs et rencontres institutionnelles.',
+    badge: 'Événements',
+    src: null, // ← Remplace null par ton lien embed YouTube
+  },
 ]
+
+/* ─── Composant VideoCard ────────────────────────────────────────
+   - Si src fourni → <iframe> YouTube/Vimeo embed direct
+   - Si src null   → placeholder élégant avec badge "Bientôt"
+   ─────────────────────────────────────────────────────────────── */
+function VideoCard({ video, large = false }) {
+  const [playing, setPlaying] = useState(false)
+
+  const aspectClass = large ? 'aspect-video' : 'aspect-video'
+
+  return (
+    <div className="group overflow-hidden rounded-2xl border-2 border-white/15 bg-white/5 backdrop-blur transition hover:border-[#F4952F]/60 hover:shadow-lg hover:shadow-[#F4952F]/10">
+
+      {/* Zone vidéo */}
+      <div className={`relative ${aspectClass} overflow-hidden`}>
+        {video.src && playing ? (
+          /* ── Player embed actif ── */
+          <iframe
+            src={`${video.src}?autoplay=1&rel=0&modestbranding=1`}
+            title={video.title}
+            className="absolute inset-0 h-full w-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : video.src ? (
+          /* ── Thumbnail cliquable (vidéo dispo mais pas encore lancée) ── */
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            className="absolute inset-0 flex w-full items-center justify-center bg-[#1B3F8C]/80"
+            aria-label={`Lire ${video.title}`}
+          >
+            {/* Thumbnail YouTube auto si on peut la déduire */}
+            <div className="group-hover/btn flex h-20 w-20 items-center justify-center rounded-full border-4 border-white/80 bg-[#F4952F] text-white shadow-2xl transition hover:scale-110 hover:bg-[#e08522]">
+              <span className="ml-1 text-3xl">▶</span>
+            </div>
+          </button>
+        ) : (
+          /* ── Placeholder élégant (pas encore de vidéo) ── */
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#1B3F8C]/60 p-6">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/30 bg-white/10 text-4xl">
+              🎬
+            </div>
+            <span className="rounded-full bg-white/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white/80 backdrop-blur">
+              Bientôt disponible
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Métadonnées */}
+      <div className="p-5">
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-[#F4952F]/25 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#F4952F]">
+            {video.badge}
+          </span>
+          {!video.src && (
+            <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] font-medium uppercase tracking-wider text-white/50">
+              En préparation
+            </span>
+          )}
+        </div>
+        <h3 className={`mt-3 font-black text-white ${large ? 'text-xl' : 'text-base'}`}>
+          {video.title}
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-slate-300">
+          {video.desc}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 export default function SagcoMediasPage() {
   const [activeCategory, setActiveCategory] = useState('Tout voir')
@@ -35,6 +143,9 @@ export default function SagcoMediasPage() {
     return photos.filter((p) => p.category === activeCategory)
   }, [activeCategory])
 
+  // Sépare les 2 premières (grandes) des 2 suivantes (petites)
+  const [featuredVideos, secondaryVideos] = [videos.slice(0, 2), videos.slice(2)]
+
   return (
     <>
       {/* HERO */}
@@ -43,9 +154,7 @@ export default function SagcoMediasPage() {
           <img src={HERO_IMAGE} alt="" className="h-full w-full object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1B3F8C] via-[#1B3F8C]/85 to-[#1B3F8C]/40" />
         </div>
-        <div className="pointer-events-none absolute -right-20 top-0 h-full w-[500px]">
-          <SilhouetteFiligree color="#ffffff" opacity={0.18} className="h-full w-full" />
-        </div>
+      
 
         <div className="relative mx-auto max-w-[1440px] px-4 py-20 md:px-6 md:py-28 xl:px-8">
           <nav className="flex items-center gap-2 text-xs text-slate-200">
@@ -57,7 +166,7 @@ export default function SagcoMediasPage() {
             Notre <span className="text-[#F4952F]">Médiathèque</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-slate-100">
-            Retour en images sur nos actions terrain.
+            Retour en images et en vidéos sur nos actions terrain.
           </p>
         </div>
       </section>
@@ -76,8 +185,7 @@ export default function SagcoMediasPage() {
               <div className="mt-4 h-1 w-16 rounded-full bg-[#F4952F]" />
               <p className="mt-3 max-w-2xl text-slate-600">
                 Découvrez les moments forts de nos campagnes de sensibilisation,
-                nos formations et le déploiement du Bus des Femmes sur le
-                terrain.
+                nos formations et le déploiement du Bus des Femmes sur le terrain.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -130,41 +238,57 @@ export default function SagcoMediasPage() {
         </div>
       </section>
 
-      {/* VIDEOS */}
+      {/* ════════════════════════════════════════════════════════════
+          VIDÉOS — Layout repensé : 2 grandes + 2 petites
+          ════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-[#1B3F8C] py-20 text-white md:py-24">
-        <div className="pointer-events-none absolute -left-20 top-1/4 h-[400px] w-[400px]">
-          <SilhouetteFiligree color="#ffffff" opacity={0.05} className="h-full w-full" />
-        </div>
+       
+
         <div className="relative mx-auto max-w-[1200px] px-4 md:px-6 xl:px-8">
+          {/* En-tête section */}
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#F4952F]">
               Vidéos & Reportages
             </span>
             <h2 className="mt-4 text-3xl font-black md:text-4xl">
-              Plongez dans l’action
+              Plongez dans l'action
             </h2>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[#F4952F]" />
             <p className="mt-4 text-slate-200">
-              Retrouvez bientôt nos reportages vidéo (espace en préparation).
+              Pour ajouter une vidéo, remplace{' '}
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-[#F4952F]">
+                src: null
+              </code>{' '}
+              par un lien embed YouTube dans le tableau{' '}
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-[#F4952F]">
+                videos
+              </code>
+              .
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {videos.map((v) => (
-              <div
-                key={v.title}
-                className="overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur transition hover:border-[#F4952F]/60"
-              >
-                <div className="flex aspect-video items-center justify-center rounded-xl border border-white/10 bg-[#1B3F8C]/60">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F4952F] text-3xl text-white shadow-lg">
-                    ▶
-                  </div>
-                </div>
-                <h3 className="mt-5 text-lg font-bold text-white">
-                  {v.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-200">{v.desc}</p>
-              </div>
+
+          {/* 2 grandes vidéos */}
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {featuredVideos.map((v) => (
+              <VideoCard key={v.title} video={v} large />
             ))}
+          </div>
+
+          {/* 2 petites vidéos */}
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            {secondaryVideos.map((v) => (
+              <VideoCard key={v.title} video={v} />
+            ))}
+          </div>
+
+          {/* Tip contextuel */}
+          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur">
+            <p className="text-sm text-slate-300">
+              💡 <strong className="text-white">Pour ajouter une vidéo YouTube</strong> :
+              sur la vidéo → <em>Partager → Intégrer</em> → copie l'URL dans{' '}
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-[#F4952F]">src</code>{' '}
+              du tableau <code className="rounded bg-white/10 px-1.5 py-0.5 text-[#F4952F]">videos</code>.
+            </p>
           </div>
         </div>
       </section>
