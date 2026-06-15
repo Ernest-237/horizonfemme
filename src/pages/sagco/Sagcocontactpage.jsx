@@ -5,9 +5,7 @@ import { useState } from 'react'
 const HERO_IMAGE =
   'https://femme.kdllogiscargo.com/assets/images/WhatsApp%20Image%202026-01-26%20at%2003.17.50.jpeg'
 
-const MAP_EMBED =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.686657688646!2d11.516667!3d3.866667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf7a309a7977%3A0x7f54d93f7f6c9b0!2sYaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2sfr!4v1625000000000!5m2!1sfr!2sfr'
-
+const MAP_EMBED ='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.6629370134224!2d11.501191674471219!3d3.882240348210049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcfd834fe2837%3A0xd7bf8e78911ca039!2sMoto%20Action%20Cameroun!5e0!3m2!1sfr!2sca!4v1781491421946!5m2!1sfr!2sca'
 export default function SagcoContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [status, setStatus] = useState(null)
@@ -137,9 +135,9 @@ export default function SagcoContactPage() {
             {/* INFO */}
             <div className="space-y-5">
               {[
-                { icon: '📍', title: 'Nos Bureaux', body: <>Yaoundé, Cameroun<br />Quartier Mini-ferme Melen<br />Derrière Immeuble MTN</> },
+                { icon: '📍', title: 'Nos Bureaux', body: <>Yaoundé, Cameroun<br />route 1506<br />Omnisport</> },
                 { icon: '📧', title: 'Email', body: <a href="mailto:horizons_femmes@yahoo.fr" className="font-bold text-[#F4952F] hover:underline">horizons_femmes@yahoo.fr</a> },
-                { icon: '📞', title: 'Téléphone', body: <a href="tel:+237222314302" className="font-bold text-[#F4952F] hover:underline">+237 222 31 43 02</a> },
+                { icon: '📞', title: 'Téléphone', body: <a href="tel:(+237) 22 10 36 09" className="font-bold text-[#F4952F] hover:underline">+237 222 31 43 02</a> },
               ].map((info) => (
                 <div key={info.title} className="rounded-2xl border-2 border-slate-100 bg-white p-7 shadow-sm transition hover:border-[#F4952F]">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1B3F8C] text-xl text-white shadow-md">

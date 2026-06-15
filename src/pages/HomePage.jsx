@@ -61,132 +61,141 @@ export default function HomePage() {
           HERO — Carrousel simple gauche-droite
           ════════════════════════════════════════════════════════════ */}
       <section id="hero-home" className="relative w-full">
-        <div className="relative overflow-hidden">
+  <div className="relative overflow-hidden">
 
-          {/* ── Conteneur du carrousel ── */}
-          <div className="relative h-[52vh] min-h-[320px] md:h-[62vh] lg:h-[68vh] bg-hf-blue">
-            {/* Slides qui se déplacent */}
-            <div className="flex h-full transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-              {slides.map((slide) => (
-                <div
-                  key={slide.id}
-                  className="relative w-full flex-shrink-0"
-                  style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                >
-                  {/* Overlay dégradé pour lisibilité */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-hf-blue/90" />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,63,140,0.15)_0%,rgba(27,63,140,0.10)_50%,rgba(27,63,140,0.85)_100%)]" />
+    {/* ── Conteneur du carrousel ── */}
+    <div className="relative h-[52vh] min-h-[320px] md:h-[62vh] lg:h-[68vh] bg-hf-blue">
+      {/* Slides qui se déplacent */}
+      <div
+        className="flex h-full transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+      >
+        {slides.map((slide) => (
+          <div
+            key={slide.id}
+            className="relative h-full w-full flex-shrink-0 overflow-hidden"
+          >
+            {/* Image en vrai <img> pour un cover parfait sans zoom */}
+            <img
+              src={slide.image}
+              alt={slide.label}
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
 
-                  {/* Filigrane silhouette (droit, très subtil) */}
-                  <div className="pointer-events-none absolute right-0 top-1/4 hidden h-[75%] w-[380px] lg:block">
-                    <SilhouetteFiligree opacity={0.07} className="h-full w-full" />
-                  </div>
-                </div>
-              ))}
+            {/* Overlay dégradé pour lisibilité */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-hf-blue/90" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,63,140,0.15)_0%,rgba(27,63,140,0.10)_50%,rgba(27,63,140,0.85)_100%)]" />
+
+            {/* Filigrane silhouette (droit, très subtil) */}
+            <div className="pointer-events-none absolute right-0 top-1/4 hidden h-[75%] w-[380px] lg:block">
+              <SilhouetteFiligree opacity={0.07} className="h-full w-full" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Flèches de navigation gauche/droite */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 md:left-8"
+        aria-label="Slide précédent"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+          <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clipRule="evenodd" />
+        </svg>
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 md:right-8"
+        aria-label="Slide suivant"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+          <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clipRule="evenodd" />
+        </svg>
+      </button>
+
+      {/* Compteur en bas à droite */}
+      <div className="absolute bottom-5 right-5 z-10 flex items-center gap-6 md:right-8">
+        <span className="text-sm font-semibold tracking-[0.18em] text-white/70">
+          {String(currentSlide + 1).padStart(2, '0')} —{' '}
+          {String(slides.length).padStart(2, '0')}
+        </span>
+      </div>
+    </div>
+
+    {/* ── TEXTE EN BAS DES VISUELS — sur fond bleu marine ── */}
+    <div className="bg-hf-blue">
+      <div className="mx-auto max-w-[1440px] px-4 py-8 md:px-6 md:py-10 lg:px-8">
+        <div className="grid items-end gap-6 lg:grid-cols-[1.4fr_0.6fr] lg:gap-12">
+
+          {/* Gauche — contenu du slide actif */}
+          <div className="text-white">
+            <div className="inline-flex items-center gap-3">
+              <span className="h-px w-8 bg-hf-orange" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-hf-orange">
+                {activeSlide.label}
+              </p>
             </div>
 
-            {/* Flèches de navigation gauche/droite */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 md:left-8"
-              aria-label="Slide précédent"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
-                <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clipRule="evenodd" />
-              </svg>
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 md:right-8"
-              aria-label="Slide suivant"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
-                <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clipRule="evenodd" />
-              </svg>
-            </button>
+            <h1 className="mt-3 text-2xl font-black leading-[1.12] tracking-tight md:text-3xl lg:text-4xl">
+              {activeSlide.title}
+            </h1>
 
-            {/* Compteur en bas à droite */}
-            <div className="absolute bottom-5 right-5 z-10 flex items-center gap-6 md:right-8">
-              <span className="text-sm font-semibold tracking-[0.18em] text-white/70">
-                {String(currentSlide + 1).padStart(2, '0')} —{' '}
-                {String(slides.length).padStart(2, '0')}
-              </span>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
+              {activeSlide.text}
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                to="/a-propos"
+                className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-hf-orange/30 transition hover:bg-hf-orange-dark"
+              >
+                {hero.primaryCta || "Découvrir l'ONG"}
+                <span aria-hidden>→</span>
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/5 px-5 py-2.5 text-sm font-bold text-white backdrop-blur transition hover:border-white hover:bg-white hover:text-hf-blue"
+              >
+                Nous contacter
+              </Link>
             </div>
           </div>
 
-          {/* ── TEXTE EN BAS DES VISUELS — sur fond bleu marine ── */}
-          <div className="bg-hf-blue">
-            <div className="mx-auto max-w-[1440px] px-4 py-8 md:px-6 md:py-10 lg:px-8">
-              <div className="grid items-end gap-6 lg:grid-cols-[1.4fr_0.6fr] lg:gap-12">
-
-                {/* Gauche — contenu du slide actif */}
-                <div className="text-white">
-                  <div className="inline-flex items-center gap-3">
-                    <span className="h-px w-8 bg-hf-orange" />
-                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-hf-orange">
-                      {activeSlide.label}
+          {/* Droite — mini-stats institutionnelles */}
+          <div className="hidden lg:block">
+            <div className="rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-hf-orange">
+                Au service de la femme et de la jeune fille
+              </p>
+              <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/15 pt-4">
+                {[
+                  { value: '20+', label: 'Années' },
+                  { value: '4', label: 'Régions' },
+                  { value: '30+', label: 'Projets' },
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <p className="text-2xl font-black text-hf-orange">{stat.value}</p>
+                    <p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-300">
+                      {stat.label}
                     </p>
                   </div>
-
-                  <h1 className="mt-3 text-2xl font-black leading-[1.12] tracking-tight md:text-3xl lg:text-4xl">
-                    {activeSlide.title}
-                  </h1>
-
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
-                    {activeSlide.text}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    <Link
-                      to="/a-propos"
-                      className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-hf-orange/30 transition hover:bg-hf-orange-dark"
-                    >
-                      {hero.primaryCta || "Découvrir l'ONG"}
-                      <span aria-hidden>→</span>
-                    </Link>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/5 px-5 py-2.5 text-sm font-bold text-white backdrop-blur transition hover:border-white hover:bg-white hover:text-hf-blue"
-                    >
-                      Nous contacter
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Droite — mini-stats institutionnelles */}
-                <div className="hidden lg:block">
-                  <div className="rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-hf-orange">
-                      Au service de la femme et de la jeune fille
-                    </p>
-                    <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/15 pt-4">
-                      {[
-                        { value: '20+', label: 'Années' },
-                        { value: '4', label: 'Régions' },
-                        { value: '30+', label: 'Projets' },
-                      ].map((stat) => (
-                        <div key={stat.label} className="text-center">
-                          <p className="text-2xl font-black text-hf-orange">{stat.value}</p>
-                          <p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-300">
-                            {stat.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    <a
-                      href="#edito-home"
-                      className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-white/80 transition hover:text-hf-orange"
-                    >
-                      Lire l'édito <span aria-hidden>↓</span>
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
+              
+                <a href="#edito-home"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-white/80 transition hover:text-hf-orange"
+              >
+                Lire l'édito <span aria-hidden>↓</span>
+              </a>
             </div>
           </div>
-        </div>
-      </section>
 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       {/* ════════════════════════════════════════════════════════════
           EDITO
           ════════════════════════════════════════════════════════════ */}

@@ -20,10 +20,11 @@ const offices = [
     city: 'Yaoundé',
     region: 'Centre',
     address: 'B.P 8480 — Mini-ferme Melen, Immeuble MTN',
-    phone: '+237 222 314 302',
+    phone: '(+237) 622 548 642',
     mapEmbedSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.6979083888587!2d11.494442774143043!3d3.8629375962006705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf58d47c0701%3A0xf6bbfcc3b2f4e6f7!2sMini%20ferme%20Melen%2C%20Yaound%C3%A9!5e0!3m2!1sfr!2scm!4v1716000000000!5m2!1sfr!2scm',
-  },
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.7412665674997!2d11.494032774471131!3d3.865590948332014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcfd32c22780b%3A0x6adad99b0755901f!2sHorizons%20Femmes%20Life%20Centre!5e0!3m2!1sfr!2sca!4v1781484901234!5m2!1sfr!2sca',
+       
+    },
   {
     id: 'douala',
     label: '02',
@@ -31,7 +32,7 @@ const offices = [
     city: 'Douala',
     region: 'Littoral',
     address: 'Elf axe-lourd, Carrefour Nelson Mandela, Immeuble Beteumen',
-    phone: '+237 699 670 954',
+    phone: '(+237) 622 548 641',
     mapEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.0522095392785!2d9.729587824471405!3d4.009687447261407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10610d52daf74dab%3A0x6eb3f4acdc4fd72d!2sCarrefour%20Nelson%20Mandela!5e0!3m2!1sfr!2sca!4v1779417199766!5m2!1sfr!2sca', // ← à remplacer par le lien d'embed Google Maps de Douala
   },
   {
@@ -41,7 +42,7 @@ const offices = [
     city: 'Bafoussam',
     region: 'Ouest',
     address: 'Carrefour Auberge',
-    phone: '+237 6 99 65 31 31',
+    phone: '(+237) 622 548 638',
     mapEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15886.291434576868!2d10.40808028715819!3d5.481559600000022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105f9b0017d55f81%3A0x55ca3d8aaca0e5c4!2sCarrefour%20auberge!5e0!3m2!1sfr!2sca!4v1779417403955!5m2!1sfr!2sca', // ← à remplacer
   },
   {
@@ -51,7 +52,7 @@ const offices = [
     city: 'Ebolowa',
     region: 'Sud',
     address: 'Carrefour an 2000, descente Brasseries',
-    phone: '+237 698 847 925',
+    phone: '(+237) 622 548 639',
     mapEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.638327305673!2d11.150429674470388!3d2.919931454519979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10884f0047692e53%3A0x36a431f4c26f8eb7!2sDescente%20Brasseries!5e0!3m2!1sfr!2sca!4v1779417478897!5m2!1sfr!2sca', // ← à remplacer
   },
 ]
@@ -305,10 +306,10 @@ export default function ContactPage() {
                       Siège social — Yaoundé
                     </p>
                     <a
-                      href="tel:+237222314302"
+                      href="tel:(+237) 622 548 642"
                       className="mt-1 block text-sm font-bold text-hf-blue hover:underline"
                     >
-                      +237 222 314 302
+                      (+237) 622 548 642
                     </a>
                   </div>
                 </div>
@@ -516,7 +517,7 @@ export default function ContactPage() {
                 ✉ Écrire un email
               </a>
               <a
-                href="tel:+237222314302"
+                href="tel:(+237) 622 548 642"
                 className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-hf-orange-dark"
               >
                 📞 Appeler le siège

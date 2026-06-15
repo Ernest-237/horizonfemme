@@ -20,7 +20,7 @@ const actualites = [
     title: 'Atelier de renforcement des capacités des pairs éducatrices',
     excerpt:
       "30 pairs éducatrices ont été formées à Douala sur les techniques de sensibilisation au VIH/SIDA, la santé sexuelle et reproductive, et la prévention des violences basées sur le genre.",
-    image: '/assets/hf/livre.jpg',
+    image: '/assets/hf/act1.jpeg',
     featured: false,
   },
   {
@@ -30,7 +30,7 @@ const actualites = [
     title: "Signature de l'accord de collaboration avec le MINSANTÉ",
     excerpt:
       "Le Ministère de la Santé Publique a officialisé son partenariat avec le projet SAGCO pour renforcer l'accès aux soins des populations clés dans les 4 régions d'intervention.",
-    image: '/assets/hf/livre.jpg',
+    image: '/assets/hf/act2.jpeg',
     featured: false,
   },
   {
@@ -40,7 +40,7 @@ const actualites = [
     title: 'Campagne de sensibilisation dans les districts de santé du Littoral',
     excerpt:
       "Les équipes de Moto Action ont sillonné les districts de santé de la région du Littoral pour une vaste campagne de sensibilisation porte-à-porte sur le VIH et les IST.",
-    image: '/assets/hf/lutte.jpg',
+    image: '/assets/hf/act3.jpeg',
     featured: false,
   },
   {

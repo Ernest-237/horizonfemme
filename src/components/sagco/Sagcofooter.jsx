@@ -91,10 +91,10 @@ export default function SagcoFooter() {
               <div>
                 <p className="font-bold text-white">Téléphone</p>
                 <a
-                  href="tel:+237222314302"
+                  href="tel:(+237) 622 548 642"
                   className="mt-1 block text-slate-200 hover:text-[#F4952F]"
                 >
-                  +237 222 31 43 02
+                  (+237) 622 548 642
                 </a>
               </div>
               <div>
@@ -116,9 +116,9 @@ export default function SagcoFooter() {
             </h4>
             <ul className="mt-4 space-y-4 text-sm">
               {[
-                { region: 'Littoral', city: 'Douala', tel: '+237 233 18 79 55', telHref: '+237233187955' },
-                { region: 'Ouest', city: 'Bafoussam', tel: '+237 222 70 29 25', telHref: '+237222702925' },
-                { region: 'Sud', city: 'Ebolowa', tel: '+237 698 84 79 25', telHref: '+237698847925' },
+                { region: 'Littoral', city: 'Douala', tel: '(+237) 622 548 641', telHref: '(+237) 622 548 641' },
+                { region: 'Ouest', city: 'Bafoussam', tel: '(+237) 622 548 638', telHref: '(+237) 622 548 638' },
+                { region: 'Sud', city: 'Ebolowa', tel: '(+237) 622 548 639', telHref: '(+237) 622 548 639' },
               ].map((a) => (
                 <li key={a.region}>
                   <p className="font-bold text-white">{a.region}</p>
