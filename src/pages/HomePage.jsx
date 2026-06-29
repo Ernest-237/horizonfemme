@@ -75,16 +75,16 @@ export default function HomePage() {
             key={slide.id}
             className="relative h-full w-full flex-shrink-0 overflow-hidden"
           >
-            {/* Image en vrai <img> pour un cover parfait sans zoom */}
+            {/* Image en vrai <img> pour un cover parfait */}
             <img
               src={slide.image}
               alt={slide.label}
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
 
-            {/* Overlay dégradé pour lisibilité */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-hf-blue/90" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,63,140,0.15)_0%,rgba(27,63,140,0.10)_50%,rgba(27,63,140,0.85)_100%)]" />
+            {/* Overlay dégradé — ALLÉGÉ */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-hf-blue/60" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,63,140,0.10)_0%,rgba(27,63,140,0.05)_50%,rgba(27,63,140,0.60)_100%)]" />
 
             {/* Filigrane silhouette (droit, très subtil) */}
             <div className="pointer-events-none absolute right-0 top-1/4 hidden h-[75%] w-[380px] lg:block">
@@ -94,7 +94,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Flèches de navigation gauche/droite */}
+      {/* Flèches de navigation — inchangées */}
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 md:left-8"
@@ -114,7 +114,7 @@ export default function HomePage() {
         </svg>
       </button>
 
-      {/* Compteur en bas à droite */}
+      {/* Compteur en bas à droite — inchangé */}
       <div className="absolute bottom-5 right-5 z-10 flex items-center gap-6 md:right-8">
         <span className="text-sm font-semibold tracking-[0.18em] text-white/70">
           {String(currentSlide + 1).padStart(2, '0')} —{' '}
@@ -123,7 +123,7 @@ export default function HomePage() {
       </div>
     </div>
 
-    {/* ── TEXTE EN BAS DES VISUELS — sur fond bleu marine ── */}
+    {/* ── TEXTE EN BAS DES VISUELS — inchangé ── */}
     <div className="bg-hf-blue">
       <div className="mx-auto max-w-[1440px] px-4 py-8 md:px-6 md:py-10 lg:px-8">
         <div className="grid items-end gap-6 lg:grid-cols-[1.4fr_0.6fr] lg:gap-12">
@@ -183,7 +183,7 @@ export default function HomePage() {
                 ))}
               </div>
               
-                <a href="#edito-home"
+              <a href="#edito-home"
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-white/80 transition hover:text-hf-orange"
               >
                 Lire l'édito <span aria-hidden>↓</span>

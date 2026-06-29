@@ -149,22 +149,22 @@ export default function Header() {
       </div>
 
       {/* ═══════════════════
-          MAIN NAV — réduit
+          MAIN NAV — Logo agrandi
           ═══════════════════ */}
       <div className="border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-5 px-4 py-2.5 md:px-6 xl:px-8">
 
-          {/* Logo + brand — taille réduite */}
-          <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
+          {/* Logo + brand — AGGRANDI */}
+          <Link to="/" className="flex min-w-0 shrink-0 items-center gap-4">
             <div className="overflow-hidden rounded-lg bg-white">
               <img
                 src={NAVBAR_LOGO}
                 alt="Logo Horizons Femmes"
-                className="h-9 w-9 object-contain md:h-10 md:w-10"
+                className="h-12 w-12 object-contain md:h-14 md:w-14"  /* ← agrandi */
               />
             </div>
             <div className="hidden min-w-0 sm:block">
-              <p className="whitespace-nowrap text-base font-black leading-tight tracking-tight text-hf-blue md:text-[17px]">
+              <p className="whitespace-nowrap text-base font-black leading-tight tracking-tight text-hf-blue md:text-[18px]">
                 Horizons Femmes
               </p>
               <p className="text-[8.5px] font-medium uppercase tracking-[0.18em] text-slate-500">
@@ -243,7 +243,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — inchangé */}
       {mobileOpen ? (
         <>
           <button
