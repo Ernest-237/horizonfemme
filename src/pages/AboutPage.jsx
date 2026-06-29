@@ -7,65 +7,68 @@ const ABOUT_LEADER_IMAGE = '/assets/hf/comite2-hf.jpg'
 const ABOUT_BANNER_IMAGE = '/assets/hf/comite3-hf.jpg'
 const ABOUT_MAP_IMAGE = '/assets/hf/map.jpg'
 
-/* ─────────────────────────────────────────────────────────────────
-   SERVICES proposés par l'organisation
-   ───────────────────────────────────────────────────────────────── */
 const services = [
-  {
-    icon: '🏥',
-    title: 'Accueil et Prévention',
-    desc: "Enregistrement et orientation des bénéficiaires avec attribution du Code Unique Identification CUI, suivis de la distribution du matériel de prévention Sensibilisation au port correct du préservatif et au changement de comportement",
-  },
-  {
-    icon: '🛡️',
-    title: 'Case management',
-    desc: "Suivi communautaire (éducation thérapeutique, groupe de parole, visite à domicile, appels téléphoniques, recherches des perdus de vues).",
-  },
-  {
-    icon: '💼',
-    title: 'Infirmerie',
-    desc: "Consultation, diagnostic primaire et prise en charge des infections sexuellement transmissibles (IST) et autres pathologies.",
-  },
-  {
-    icon: '🤝',
-    title: 'Médecine Générale',
-    desc: "Consultations médicales diverses,Suivi des personnes vivant avec le VIH,Initiation PrEP.",
-  },
-  {
-    icon: '🎓',
-    title: 'Laboratoire',
-    desc: "Prélèvement et acheminement des échantillons charge virale, créatinine, bilan urinaire.",
-  },
-  {
-    icon: '🌍',
-    title: 'Réponses aux VBG',
-    desc: "Promotion des droits humains (formation sur les droits humains, organisation des activités ludiques/récréatives).",
-  },
+  { icon: '🏥', title: 'Accueil et Prévention', desc: "Enregistrement et orientation des bénéficiaires avec attribution du Code Unique Identification CUI, suivis de la distribution du matériel de prévention Sensibilisation au port correct du préservatif et au changement de comportement" },
+  { icon: '🛡️', title: 'Case management', desc: "Suivi communautaire (éducation thérapeutique, groupe de parole, visite à domicile, appels téléphoniques, recherches des perdus de vues)." },
+  { icon: '💼', title: 'Infirmerie', desc: "Consultation, diagnostic primaire et prise en charge des infections sexuellement transmissibles (IST) et autres pathologies." },
+  { icon: '🤝', title: 'Médecine Générale', desc: "Consultations médicales diverses,Suivi des personnes vivant avec le VIH,Initiation PrEP." },
+  { icon: '🎓', title: 'Laboratoire', desc: "Prélèvement et acheminement des échantillons charge virale, créatinine, bilan urinaire." },
+  { icon: '🌍', title: 'Réponses aux VBG', desc: "Promotion des droits humains (formation sur les droits humains, organisation des activités ludiques/récréatives)." },
 ]
 
 export default function AboutPage() {
   const content = useSiteContent()
   const about = content.about
 
-  const [activeAxe, setActiveAxe] = useState(0)
-  const [activeOfficeId, setActiveOfficeId] = useState(
-    about.offices?.[0]?.id || null
-  )
+  // États interactifs
+  const [activeFramework, setActiveFramework] = useState(0)      // index du cadre stratégique
+  const [activeAxe, setActiveAxe] = useState(0)                  // index des axes
+  const [activeOrgan, setActiveOrgan] = useState(0)              // index des organes
+  const [activeOfficeId, setActiveOfficeId] = useState(about.offices?.[0]?.id || null)
 
-  const axesSection = about.sections?.find((s) => s.id === 'axes')
-  const visionSection = about.sections?.find((s) => s.id === 'vision')
-  const missionSection = about.sections?.find((s) => s.id === 'mission')
-  const valuesSection = about.sections?.find((s) => s.id === 'values')
-  const expertiseSection = about.sections?.find((s) => s.id === 'expertise')
-  const activeOffice = about.offices?.find((o) => o.id === activeOfficeId) || about.offices?.[0]
+  // Construction des items du cadre stratégique à partir des données du site
+  const frameworkItems = [
+    {
+      id: 'histoire',
+      title: 'Notre Histoire',
+      content: about.historyBody?.join('\n\n') || about.historyIntro,
+    },
+    {
+      id: 'mission',
+      title: 'Notre Mission',
+      content: about.sections?.find(s => s.id === 'mission')?.content || about.mission,
+    },
+    {
+      id: 'valeurs',
+      title: 'Nos Valeurs',
+      content: about.sections?.find(s => s.id === 'values')?.list?.join(', ') || about.values?.join(', '),
+    },
+    {
+      id: 'vision',
+      title: 'Notre Vision',
+      content: about.sections?.find(s => s.id === 'vision')?.content || about.vision,
+    },
+    {
+      id: 'services',
+      title: 'Nos Services',
+      servicesList: services,   // spécial pour l'affichage des cartes
+    },
+    {
+      id: 'expertise',
+      title: 'Notre Savoir-faire',
+      content: about.sections?.find(s => s.id === 'expertise')?.list?.join(', ') || about.expertise,
+    },
+  ]
+
+  const axesSection = about.sections?.find(s => s.id === 'axes')
+  const organs = about.governance  // contient maintenant les organes avec noteRH éventuelle
+  const activeOffice = about.offices?.find(o => o.id === activeOfficeId) || about.offices?.[0]
   const partnerLogos = about?.partners?.logos || content.home?.partners?.logos || []
 
   return (
     <div className="space-y-16 pb-12 md:space-y-20">
 
-      {/* ════════════════════════════════════════════════════════════
-          HERO
-          ════════════════════════════════════════════════════════════ */}
+      {/* ════════════ HERO ════════════ */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img src={ABOUT_HERO_IMAGE} alt="" className="h-full w-full object-cover opacity-40" />
@@ -93,111 +96,100 @@ export default function AboutPage() {
               {about.heroText}
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#histoire" className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-hf-orange-dark">
-                Notre histoire <span aria-hidden>↓</span>
+              <a href="#cadre-strategique" className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-hf-orange-dark">
+                Notre cadre stratégique <span aria-hidden>↓</span>
               </a>
-              <a href="#services" className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:border-white hover:bg-white hover:text-hf-blue">
-                Nos services
+              <a href="#axes-strategiques" className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:border-white hover:bg-white hover:text-hf-blue">
+                Nos axes stratégiques
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          HISTOIRE
-          ════════════════════════════════════════════════════════════ */}
-      <section id="histoire" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm md:p-10">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">{about.historyTitle}</p>
-            <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">Une trajectoire de plus de 20 ans</h2>
-            <div className="mt-3 h-1 w-16 rounded-full bg-hf-orange" />
-            <p className="mt-6 text-lg leading-8 text-slate-700">{about.historyIntro}</p>
-            <div className="mt-6 space-y-5 text-base leading-8 text-slate-600">
-              {about.historyBody.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div className="relative min-h-[360px] overflow-hidden rounded-[28px] border border-slate-200 shadow-sm">
-              <img src={ABOUT_LEADER_IMAGE} alt="Direction Horizons Femmes" className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-hf-blue/80 via-hf-blue/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <div className="rounded-2xl bg-white/15 p-4 text-white backdrop-blur">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-hf-orange">Leadership</p>
-                  <p className="mt-2 text-sm font-bold">Un engagement porté par des femmes pionnières</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-[28px] bg-hf-blue p-7 text-white shadow-lg">
-              <div className="pointer-events-none absolute -right-10 -bottom-10 h-[200px] w-[200px]">
-                <SilhouetteFiligree opacity={0.18} className="h-full w-full" />
-              </div>
-              <div className="relative">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-hf-orange">Mise en lumière</p>
-                <h3 className="mt-3 text-2xl font-black">{about.storySpotlight.title}</h3>
-                <p className="mt-4 leading-8 text-slate-200">{about.storySpotlight.text}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          SERVICES
-          ════════════════════════════════════════════════════════════ */}
-      <section id="services" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      {/* ════════════ CADRE STRATÉGIQUE (interactif) ════════════ */}
+      <section id="cadre-strategique" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">Nos services</p>
-          <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">Ce que nous offrons</h2>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">Notre Cadre stratégique</p>
+          <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">Les fondements de notre action</h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-hf-orange" />
           <p className="mt-4 text-base leading-relaxed text-slate-600">
-            Horizons Femmes déploie une gamme de services intégrés au bénéfice des femmes,
-            des jeunes filles et des populations vulnérables dans les régions d'intervention.
+            Découvrez les éléments clés qui structurent l’identité et l’engagement de Horizons Femmes.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group relative overflow-hidden rounded-[24px] border-2 border-slate-100 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-hf-orange hover:shadow-xl"
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-hf-blue/10 text-3xl">
-                <span aria-hidden>{service.icon}</span>
-              </div>
-              <h3 className="mt-4 text-lg font-black text-hf-blue">{service.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{service.desc}</p>
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-hf-orange transition-all duration-500 group-hover:w-full" />
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.35fr_0.65fr]">
+          {/* Navigation */}
+          <div className="space-y-2">
+            {frameworkItems.map((item, idx) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setActiveFramework(idx)}
+                className={`group w-full rounded-2xl p-4 text-left transition ${
+                  activeFramework === idx
+                    ? 'bg-hf-blue text-white shadow-md'
+                    : 'border-2 border-slate-100 bg-white text-slate-700 hover:border-hf-orange'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-black ${
+                    activeFramework === idx ? 'bg-hf-orange text-white' : 'bg-hf-blue/10 text-hf-blue group-hover:bg-hf-orange group-hover:text-white'
+                  }`}>
+                    {idx + 1}
+                  </span>
+                  <span className="text-sm font-bold leading-5">{item.title}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Détail */}
+          <div className="relative overflow-hidden rounded-[28px] bg-hf-blue p-8 text-white shadow-lg md:p-10">
+            <div className="pointer-events-none absolute -right-10 -bottom-10 h-[260px] w-[260px]">
+              <SilhouetteFiligree opacity={0.1} className="h-full w-full" />
             </div>
-          ))}
+            <div className="relative">
+              <span className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white">
+                {frameworkItems[activeFramework].title}
+              </span>
+              <div className="mt-3 h-1 w-12 rounded-full bg-hf-orange" />
+              {frameworkItems[activeFramework].servicesList ? (
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {frameworkItems[activeFramework].servicesList.map(srv => (
+                    <div key={srv.title} className="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                      <div className="text-2xl">{srv.icon}</div>
+                      <h4 className="mt-2 font-bold text-white">{srv.title}</h4>
+                      <p className="mt-1 text-sm text-slate-200">{srv.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-5 text-lg leading-9 text-slate-100 whitespace-pre-line">
+                  {frameworkItems[activeFramework].content}
+                </p>
+              )}
+              <p className="mt-8 text-xs uppercase tracking-wider text-slate-300">
+                {activeFramework + 1} / {frameworkItems.length}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          AXES STRATÉGIQUES (interactif)
-          ════════════════════════════════════════════════════════════ */}
-      <section id="axes" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      {/* ════════════ AXES STRATÉGIQUES (interactif, ancre renommée) ════════════ */}
+      <section id="axes-strategiques" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">Axes stratégiques</p>
-          <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">
-            Les axes d'intervention et leurs objectifs
-          </h2>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">Nos Axes stratégiques</p>
+          <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">Les axes d'intervention et leurs objectifs</h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-hf-orange" />
           <p className="mt-4 text-base leading-relaxed text-slate-600">
-            Chaque axe est adossé à un objectif spécifique qui guide les interventions
-            de Horizons Femmes sur le terrain.
+            Chaque axe est adossé à un objectif spécifique qui guide les interventions de Horizons Femmes sur le terrain.
           </p>
         </div>
 
         {axesSection?.list ? (
           <div className="mt-10 grid gap-6 lg:grid-cols-[0.35fr_0.65fr]">
-
-            {/* Liste des axes — navigation */}
             <div className="space-y-2">
               {axesSection.list.map((axe, idx) => {
                 const title = axe.split(':')[0].trim()
@@ -207,21 +199,13 @@ export default function AboutPage() {
                     type="button"
                     onClick={() => setActiveAxe(idx)}
                     className={`group w-full rounded-2xl p-4 text-left transition ${
-                      activeAxe === idx
-                        ? 'bg-hf-blue text-white shadow-md'
-                        : 'border-2 border-slate-100 bg-white text-slate-700 hover:border-hf-orange'
+                      activeAxe === idx ? 'bg-hf-blue text-white shadow-md' : 'border-2 border-slate-100 bg-white text-slate-700 hover:border-hf-orange'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-black ${
-                          activeAxe === idx
-                            ? 'bg-hf-orange text-white'
-                            : 'bg-hf-blue/10 text-hf-blue group-hover:bg-hf-orange group-hover:text-white'
-                        }`}
-                      >
-                        {idx + 1}
-                      </span>
+                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-black ${
+                        activeAxe === idx ? 'bg-hf-orange text-white' : 'bg-hf-blue/10 text-hf-blue group-hover:bg-hf-orange group-hover:text-white'
+                      }`}>{idx + 1}</span>
                       <span className="text-sm font-bold leading-5">{title}</span>
                     </div>
                   </button>
@@ -229,7 +213,6 @@ export default function AboutPage() {
               })}
             </div>
 
-            {/* Détail de l'axe sélectionné */}
             <div className="relative overflow-hidden rounded-[28px] bg-hf-blue p-8 text-white shadow-lg md:p-10">
               <div className="pointer-events-none absolute -right-10 -bottom-10 h-[260px] w-[260px]">
                 <SilhouetteFiligree opacity={0.1} className="h-full w-full" />
@@ -249,9 +232,7 @@ export default function AboutPage() {
                       {body ? (
                         <p className="mt-5 text-base leading-8 text-slate-100">{body}</p>
                       ) : (
-                        <p className="mt-5 text-base leading-8 text-slate-100">
-                          {axesSection.list[activeAxe]}
-                        </p>
+                        <p className="mt-5 text-base leading-8 text-slate-100">{axesSection.list[activeAxe]}</p>
                       )}
                     </>
                   )
@@ -265,66 +246,62 @@ export default function AboutPage() {
         ) : null}
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          INFORMATIONS CLÉS (Vision, Mission, Valeurs, Expertise)
-          ════════════════════════════════════════════════════════════ */}
-      <section id="vision" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">{about.interactiveTitle}</p>
-          <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">Les fondements de l'organisation</h2>
-          <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-hf-orange" />
-          <p className="mt-4 text-base leading-relaxed text-slate-600">{about.interactiveSubtitle}</p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {[visionSection, missionSection, valuesSection, expertiseSection].filter(Boolean).map((section) => (
-            <div key={section.id} className="overflow-hidden rounded-[28px] border-2 border-slate-100 bg-white shadow-sm transition hover:border-hf-orange">
-              <div className="h-1 bg-hf-orange" />
-              <div className="p-7 md:p-8">
-                <h3 className="text-2xl font-black text-hf-blue">{section.title}</h3>
-                <div className="mt-3 h-0.5 w-12 rounded-full bg-hf-orange" />
-                {section.content ? (
-                  <p className="mt-5 text-base leading-8 text-slate-700">{section.content}</p>
-                ) : null}
-                {section.list ? (
-                  <ul className="mt-5 space-y-3">
-                    {section.list.map((entry) => (
-                      <li key={entry} className="rounded-2xl border-l-4 border-hf-orange bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700 transition hover:bg-white hover:shadow-sm">
-                        {entry}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          GOUVERNANCE
-          ════════════════════════════════════════════════════════════ */}
-      <section id="team" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      {/* ════════════ ORGANES (interactif, avec nota bene RH) ════════════ */}
+      <section id="organes" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">{about.governanceTitle}</p>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">Nos Organes</p>
           <h2 className="mt-3 text-3xl font-black text-hf-blue md:text-4xl">Une gouvernance structurée et transparente</h2>
           <div className="mt-3 h-1 w-16 rounded-full bg-hf-orange" />
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {about.governance.map((item) => (
-            <div key={item.title} className="group relative overflow-hidden rounded-[24px] border-2 border-slate-100 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-hf-orange hover:shadow-xl">
-              <h3 className="text-lg font-black text-hf-blue">{item.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{item.text}</p>
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-hf-orange transition-all duration-500 group-hover:w-full" />
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.35fr_0.65fr]">
+          {/* Liste des organes */}
+          <div className="space-y-2">
+            {organs.map((organ, idx) => (
+              <button
+                key={organ.title}
+                type="button"
+                onClick={() => setActiveOrgan(idx)}
+                className={`group w-full rounded-2xl p-4 text-left transition ${
+                  activeOrgan === idx ? 'bg-hf-blue text-white shadow-md' : 'border-2 border-slate-100 bg-white text-slate-700 hover:border-hf-orange'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-black ${
+                    activeOrgan === idx ? 'bg-hf-orange text-white' : 'bg-hf-blue/10 text-hf-blue group-hover:bg-hf-orange group-hover:text-white'
+                  }`}>{idx + 1}</span>
+                  <span className="text-sm font-bold leading-5">{organ.title}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Détail de l'organe sélectionné */}
+          <div className="relative overflow-hidden rounded-[28px] bg-hf-blue p-8 text-white shadow-lg md:p-10">
+            <div className="pointer-events-none absolute -right-10 -bottom-10 h-[260px] w-[260px]">
+              <SilhouetteFiligree opacity={0.1} className="h-full w-full" />
             </div>
-          ))}
+            <div className="relative">
+              <span className="inline-flex items-center gap-2 rounded-full bg-hf-orange px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white">
+                {organs[activeOrgan]?.title}
+              </span>
+              <div className="mt-3 h-1 w-12 rounded-full bg-hf-orange" />
+              <p className="mt-5 text-base leading-8 text-slate-100">
+                {organs[activeOrgan]?.text}
+              </p>
+              {/* Nota bene RH pour Direction Exécutive */}
+              {organs[activeOrgan]?.title === 'Direction Exécutive' && organs[activeOrgan]?.noteRH && (
+                <div className="mt-6 rounded-2xl border border-hf-orange/30 bg-white/10 p-4 text-sm italic text-slate-200 backdrop-blur">
+                  <span className="font-bold text-hf-orange">Référentiel RH – </span>
+                  {organs[activeOrgan].noteRH}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          BANNIÈRE
-          ════════════════════════════════════════════════════════════ */}
+      {/* ════════════ BANNIÈRE ════════════ */}
       <section className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[28px] shadow-lg">
           <img src={ABOUT_BANNER_IMAGE} alt="Action de terrain Horizons Femmes" className="h-[320px] w-full object-cover md:h-[400px]" />
@@ -341,9 +318,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          DISTINCTIONS
-          ════════════════════════════════════════════════════════════ */}
+      {/* ════════════ DISTINCTIONS HONORIFIQUES ════════════ */}
       <section id="honors" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">{about.honorsTitle}</p>
@@ -364,12 +339,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          BUREAUX — Carte interactive (Carte signalétique)
-          ════════════════════════════════════════════════════════════ */}
-           {/* ════════════════════════════════════════════════════════════
-          BUREAUX — Carte statique + blocs interactifs
-          ════════════════════════════════════════════════════════════ */}
+      {/* ════════════ BUREAUX (carte signalétique) ════════════ */}
       <section id="carte-signaletique" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-hf-orange">{about.officesTitle}</p>
@@ -379,17 +349,11 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-
-          {/* Carte statique — simple image */}
+          {/* Carte statique */}
           <div className="overflow-hidden rounded-[28px] border-2 border-slate-100 bg-white shadow-sm">
             <div className="h-1 bg-hf-orange" />
             <div className="relative aspect-[3/4] w-full">
-              <img
-                src={ABOUT_MAP_IMAGE}
-                alt="Carte des antennes Horizons Femmes au Cameroun"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              {/* Overlay léger */}
+              <img src={ABOUT_MAP_IMAGE} alt="Carte des antennes Horizons Femmes" className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-hf-blue/5" />
             </div>
             <div className="border-t border-slate-100 bg-white px-5 py-3 text-center">
@@ -400,9 +364,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Bureau sélectionné + liste — reste interactif */}
+          {/* Bureau actif + liste */}
           <div className="space-y-4">
-            {/* Bureau actif — mis en évidence */}
             <div className="rounded-[28px] border-2 border-hf-orange bg-white p-7 shadow-lg">
               <div className="flex items-center gap-4">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-hf-orange bg-hf-blue text-base font-black text-white shadow-md">
@@ -416,30 +379,25 @@ export default function AboutPage() {
               </div>
               <div className="mt-5 space-y-3 border-t border-slate-100 pt-5 text-sm">
                 <div className="flex items-start gap-2 text-slate-700">
-                  <span className="text-hf-orange" aria-hidden>📍</span>
+                  <span className="text-hf-orange">📍</span>
                   <span className="leading-6">{activeOffice?.address}</span>
                 </div>
                 <div className="flex items-start gap-2 text-slate-700">
-                  <span className="text-hf-orange" aria-hidden>📞</span>
-                  <a href={`tel:${activeOffice?.phone?.replace(/\s/g, '')}`} className="font-bold text-hf-blue hover:text-hf-orange">
-                    {activeOffice?.phone}
-                  </a>
+                  <span className="text-hf-orange">📞</span>
+                  <a href={`tel:${activeOffice?.phone?.replace(/\s/g, '')}`} className="font-bold text-hf-blue hover:text-hf-orange">{activeOffice?.phone}</a>
                 </div>
               </div>
             </div>
 
-            {/* Autres bureaux en grille — interactifs */}
             <div className="grid grid-cols-3 gap-3">
-              {about.offices.filter((o) => o.id !== activeOffice?.id).map((office) => (
+              {about.offices.filter(o => o.id !== activeOffice?.id).map(office => (
                 <button
                   key={office.id}
                   type="button"
                   onClick={() => setActiveOfficeId(office.id)}
                   className="group rounded-2xl border-2 border-slate-100 bg-white p-4 text-left shadow-sm transition hover:border-hf-orange hover:shadow-md"
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-hf-blue text-xs font-black text-white group-hover:bg-hf-orange">
-                    {office.label}
-                  </span>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-hf-blue text-xs font-black text-white group-hover:bg-hf-orange">{office.label}</span>
                   <p className="mt-2 text-[11px] font-bold uppercase tracking-wider text-hf-orange">{office.region}</p>
                   <p className="mt-1 text-sm font-bold text-hf-blue">{office.city}</p>
                   <p className="mt-0.5 text-[10px] text-slate-500">{office.short}</p>
@@ -450,10 +408,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-           {/* ════════════════════════════════════════════════════════════
-          PARTENAIRES — animation marquee (identique à l'accueil)
-          ════════════════════════════════════════════════════════════ */}
-      {partnerLogos.length > 0 ? (
+      {/* ════════════ PARTENAIRES ════════════ */}
+      {partnerLogos.length > 0 && (
         <section id="partenaires-about" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm md:p-10">
             <div className="max-w-3xl">
@@ -462,37 +418,24 @@ export default function AboutPage() {
               <div className="mt-3 h-1 w-16 rounded-full bg-hf-orange" />
             </div>
 
-            {/* --- Animation marquee identique à la homepage --- */}
             <div className="relative mt-8 overflow-hidden">
-              {/* Dégradés de masquage gauche/droite */}
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-24" />
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-24" />
-
-              {/* Piste défilante */}
               <div className="partner-marquee-track flex w-max gap-4 md:gap-6">
-                {/* On duplique les logos pour une boucle infinie sans couture */}
                 {[...partnerLogos, ...partnerLogos].map((item, index) => (
-                  <div
-                    key={`${item.alt}-${index}`}
-                    className="flex h-28 w-[220px] shrink-0 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4 transition hover:border-hf-orange md:w-[250px]"
-                  >
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      className="max-h-14 w-auto object-contain md:max-h-16"
-                    />
+                  <div key={`${item.alt}-${index}`} className="flex h-28 w-[220px] shrink-0 items-center justify-center rounded-[22px] border border-slate-200 bg-slate-50 p-4 transition hover:border-hf-orange md:w-[250px]">
+                    <img src={item.src} alt={item.alt} className="max-h-14 w-auto object-contain md:max-h-16" />
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
-      ) : null}
-      {/* ════════════════════════════════════════════════════════════
-          VALEURS CTA
-          ════════════════════════════════════════════════════════════ */}
+      )}
+
+      {/* ════════════ VALEURS (agrandie) ════════════ */}
       <section id="values" className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-[28px] bg-hf-blue p-8 text-white shadow-xl md:p-12">
+        <div className="relative overflow-hidden rounded-[28px] bg-hf-blue p-10 text-white shadow-xl md:p-14">
           <div className="pointer-events-none absolute -right-12 -bottom-12 h-[320px] w-[320px]">
             <SilhouetteFiligree opacity={0.1} className="h-full w-full" />
           </div>
@@ -500,10 +443,12 @@ export default function AboutPage() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-hf-orange">Nos valeurs</p>
             <h2 className="mt-3 text-3xl font-black md:text-4xl">{about.valuesReminderTitle}</h2>
             <div className="mt-3 h-1 w-16 rounded-full bg-hf-orange" />
-            <p className="mt-5 max-w-3xl text-base leading-8 text-slate-200 md:text-lg">{about.valuesReminderText}</p>
+            <p className="mt-6 max-w-3xl text-lg leading-9 text-slate-200 md:text-xl">
+              {about.valuesReminderText}
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {about.valuesReminderList.map((value) => (
-                <span key={value} className="rounded-full border-2 border-hf-orange/40 bg-white/10 px-5 py-2.5 text-sm font-bold text-white backdrop-blur">
+                <span key={value} className="rounded-full border-2 border-hf-orange/40 bg-white/10 px-6 py-3 text-base font-bold text-white backdrop-blur">
                   {value}
                 </span>
               ))}
